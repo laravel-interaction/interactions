@@ -3,12 +3,13 @@ name: Split Tests
 on:
   pull_request: null
 
-env:
-  # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
-  COMPOSER_ROOT_VERSION: "dev-master"
+#env:
+#  # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
+#  COMPOSER_ROOT_VERSION: "dev-master"
 
 jobs:
   provide-packages-json:
+    # see json juggling: https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,6 +20,7 @@ jobs:
 
       - uses: "ramsey/composer-install@v1"
 
+      # get package json list
       - id: output_data
         run: echo "::set-output name=matrix::$(vendor/bin/monorepo-builder packages-json --tests)"
 
