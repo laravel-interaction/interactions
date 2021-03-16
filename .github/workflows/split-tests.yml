@@ -1,0 +1,51 @@
+name: Split Tests
+
+on:
+  pull_request: null
+
+jobs:
+  provide-packages-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - uses: "ramsey/composer-install@v1"
+
+      - id: output_data
+        run: echo "::set-output name=matrix::$(vendor/bin/monorepo-builder packages-json --tests)"
+
+    outputs:
+      matrix: ${{ steps.output_data.outputs.matrix }}
+
+  split-tests:
+    needs: provide-packages-json
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJson(needs.provide-packages-json.outputs.matrix )}}
+
+    name: Split Tests of ${{ matrix.package }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+
+      - uses: "ramsey/composer-install@v1"
+
+      - run: vendor/bin/monorepo-builder localize-composer-paths packages/${{ matrix.package }}/composer.json --ansi
+
+      - run: composer update --no-progress --ansi --working-dir packages/${{ matrix.package }}
+
+      - working-directory: packages/${{ matrix.package }}
+        run: vendor/bin/phpunit
