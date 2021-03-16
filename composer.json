@@ -1,7 +1,7 @@
 {
-    "name": "zing/package-skeleton-php",
-    "description": "A skeleton repository for PHP Packages",
-    "keywords": ["php", "package", "skeleton"],
+    "name": "laravel-interaction/interactions",
+    "description": "Mono repository for all Laravel Interaction the Interactions",
+    "keywords": ["laravel", "interaction"],
     "license": "MIT",
     "authors": [
         {
