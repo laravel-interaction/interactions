@@ -38,6 +38,9 @@
         }
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        },
         "laravel": {
             "providers": [
                 "LaravelInteraction\\Subscribe\\SubscribeServiceProvider"
