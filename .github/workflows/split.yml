@@ -51,3 +51,4 @@ jobs:
           package-directory: 'packages/${{ matrix.package }}'
           split-repository-organization: 'laravel-interaction'
           split-repository-name: '${{ matrix.package }}'
+          branch: master
