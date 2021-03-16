@@ -52,3 +52,5 @@ jobs:
           split-repository-organization: 'laravel-interaction'
           split-repository-name: '${{ matrix.package }}'
           branch: master
+          user-email: zingimmick@outlook.com
+          user-name: zingimmick
