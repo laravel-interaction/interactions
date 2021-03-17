@@ -39,12 +39,13 @@ jobs:
       matrix:
         package: ${{fromJson(needs.provide-packages-json.outputs.matrix)}}
 
+    name: Monorepo Split of ${{ matrix.package }}
+
     steps:
       - uses: actions/checkout@v2
 
       # Uses an action in the root directory
-      - name: Monorepo Split of ${{ matrix.package }}
-        uses: symplify/github-action-monorepo-split@1.1
+      - uses: symplify/github-action-monorepo-split@1.1
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:

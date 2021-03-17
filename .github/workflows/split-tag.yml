@@ -1,4 +1,4 @@
-name: Split Monorepo Tagged
+name: Split Tag
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
     outputs:
       matrix: ${{ steps.output_data.outputs.matrix }}
 
-  split_monorepo_tagged:
+  split-tag:
     needs: provide-packages-json
 
     runs-on: ubuntu-latest
@@ -39,6 +39,8 @@ jobs:
       fail-fast: false
       matrix:
         package: ${{fromJson(needs.provide-packages-json.outputs.matrix)}}
+
+    name: Split tag of ${{ matrix.package }}
 
     steps:
       - uses: actions/checkout@v2
@@ -51,9 +53,8 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && TAG=$(echo $TAG | sed -e 's/^v//')
           echo "::set-output name=tag::$TAG"
 
-      - # Uses an action in the root directory
-        name: Monorepo Split of ${{ matrix.package }}
-        uses: symplify/github-action-monorepo-split@1.1
+      # Uses an action in the root directory
+      - uses: symplify/github-action-monorepo-split@1.1
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
