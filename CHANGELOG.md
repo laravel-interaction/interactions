@@ -7,3 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+
+## Unreleased
+
+### Removed
+
+- [#1] Remove github actions in packages
+
+[#1]: https://github.com/laravel-interaction/interactions/pull/1
