@@ -5,8 +5,6 @@ declare(strict_types=1);
 use Rector\CodingStyle\Rector\ClassConst\VarConstantCommentRector;
 use Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector;
 use Rector\Core\Configuration\Option;
-use Rector\EarlyReturn\Rector\If_\ChangeAndIfToEarlyReturnRector;
-use Rector\EarlyReturn\Rector\If_\ChangeOrIfReturnToEarlyReturnRector;
 use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
@@ -52,9 +50,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             RenameVariableToMatchMethodCallReturnTypeRector::class,
             EncapsedStringsToSprintfRector::class,
             PrivatizeLocalPropertyToPrivatePropertyRector::class,
-            ChangeOrIfReturnToEarlyReturnRector::class,
             PrivatizeLocalGetterToPropertyRector::class,
-            ChangeAndIfToEarlyReturnRector::class,
             VarConstantCommentRector::class,
         ]
     );
