@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer;
 use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
 use PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitInternalClassFixer;
@@ -12,6 +13,32 @@ use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(__DIR__ . '/vendor/zing/coding-standard/config/config.php');
+    $services = $containerConfigurator->services();
+    $services->set(OrderedClassElementsFixer::class)
+        ->call(
+            'configure',
+            [
+                [
+                    'order' => [
+                        'use_trait',
+                        'constant_public',
+                        'constant_protected',
+                        'constant_private',
+                        'property_public',
+                        'property_protected',
+                        'property_private',
+                        'construct',
+                        'destruct',
+                        'magic',
+                        'phpunit',
+                        'method_public',
+                        'method_protected',
+                        'method_private',
+                    ],
+                    'sort_algorithm'=>'alpha'
+                ],
+            ]
+        );
     $parameters = $containerConfigurator->parameters();
     $parameters->set(
         Option::SETS,

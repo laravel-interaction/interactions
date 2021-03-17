@@ -56,6 +56,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             PrivatizeLocalGetterToPropertyRector::class,
             ChangeAndIfToEarlyReturnRector::class,
             VarConstantCommentRector::class,
+            \Rector\CodeQuality\Rector\Class_\CompleteDynamicPropertiesRector::class
         ]
     );
     $parameters->set(
