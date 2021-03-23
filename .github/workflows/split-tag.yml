@@ -45,13 +45,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - id: tag
-        run: |
-          # Strip git ref prefix from version
-          TAG=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && TAG=$(echo $TAG | sed -e 's/^v//')
-          echo "::set-output name=tag::$TAG"
+      - id: get-current-tag
+        uses: zingimmick/github-action-get-current-tag@v1
 
       # Uses an action in the root directory
       - uses: symplify/github-action-monorepo-split@1.1
@@ -61,7 +56,7 @@ jobs:
           package-directory: 'packages/${{ matrix.package }}'
           split-repository-organization: 'laravel-interaction'
           split-repository-name: '${{ matrix.package }}'
-          tag: ${{ steps.tag.outputs.tag }}
+          tag: ${{ steps.get-current-tag.outputs.tag }}
           branch: master
           user-email: zingimmick@outlook.com
           user-name: zingimmick
