@@ -27,8 +27,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'sort-packages' => true,
                 'preferred-install' => 'dist',
             ],
-            "minimum-stability" => "dev",
-            "prefer-stable" => true,
+            'minimum-stability' => 'dev',
+            'prefer-stable' => true,
         ]
     );
 };

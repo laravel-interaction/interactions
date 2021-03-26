@@ -24,7 +24,8 @@ trait Voter
             return;
         }
 
-        $this->votedItems(get_class($object))->detach($object->getKey());
+        $this->votedItems(get_class($object))
+            ->detach($object->getKey());
     }
 
     /**
@@ -121,13 +122,12 @@ trait Voter
             return;
         }
 
-        $this->votedItems(get_class($object))->attach(
-            [
+        $this->votedItems(get_class($object))
+            ->attach([
                 $object->getKey() => [
                     'upvote' => $upvote,
                 ],
-            ]
-        );
+            ]);
     }
 
     /**
@@ -135,7 +135,11 @@ trait Voter
      */
     public function voterVotes(): HasMany
     {
-        return $this->hasMany(config('vote.models.vote'), config('vote.column_names.user_foreign_key'), $this->getKeyName());
+        return $this->hasMany(
+            config('vote.models.vote'),
+            config('vote.column_names.user_foreign_key'),
+            $this->getKeyName()
+        );
     }
 
     /**
@@ -145,7 +149,8 @@ trait Voter
      */
     protected function downvotedItems(string $class): MorphToMany
     {
-        return $this->votedItems($class)->wherePivot('upvote', false);
+        return $this->votedItems($class)
+            ->wherePivot('upvote', false);
     }
 
     /**
@@ -155,7 +160,8 @@ trait Voter
      */
     protected function upvotedItems(string $class): MorphToMany
     {
-        return $this->votedItems($class)->wherePivot('upvote', true);
+        return $this->votedItems($class)
+            ->wherePivot('upvote', true);
     }
 
     /**
@@ -165,6 +171,14 @@ trait Voter
      */
     protected function votedItems(string $class): MorphToMany
     {
-        return $this->morphedByMany($class, 'voteable', config('vote.models.vote'), config('vote.column_names.user_foreign_key'), 'voteable_id')->withTimestamps()->withPivot('upvote');
+        return $this->morphedByMany(
+            $class,
+            'voteable',
+            config('vote.models.vote'),
+            config('vote.column_names.user_foreign_key'),
+            'voteable_id'
+        )
+            ->withTimestamps()
+            ->withPivot('upvote');
     }
 }

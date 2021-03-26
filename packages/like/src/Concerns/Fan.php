@@ -19,7 +19,11 @@ trait Fan
      */
     public function fanLikes(): HasMany
     {
-        return $this->hasMany(config('like.models.like'), config('like.column_names.user_foreign_key'), $this->getKeyName());
+        return $this->hasMany(
+            config('like.models.like'),
+            config('like.column_names.user_foreign_key'),
+            $this->getKeyName()
+        );
     }
 
     /**
@@ -50,7 +54,8 @@ trait Fan
             return;
         }
 
-        $this->likedItems(get_class($object))->attach($object->getKey());
+        $this->likedItems(get_class($object))
+            ->attach($object->getKey());
     }
 
     /**
@@ -58,7 +63,8 @@ trait Fan
      */
     public function toggleLike(Model $object): void
     {
-        $this->likedItems(get_class($object))->toggle($object->getKey());
+        $this->likedItems(get_class($object))
+            ->toggle($object->getKey());
     }
 
     /**
@@ -71,7 +77,8 @@ trait Fan
             return;
         }
 
-        $this->likedItems(get_class($object))->detach($object->getKey());
+        $this->likedItems(get_class($object))
+            ->detach($object->getKey());
     }
 
     /**
@@ -81,6 +88,13 @@ trait Fan
      */
     protected function likedItems(string $class): MorphToMany
     {
-        return $this->morphedByMany($class, 'likeable', config('like.models.like'), config('like.column_names.user_foreign_key'), 'likeable_id')->withTimestamps();
+        return $this->morphedByMany(
+            $class,
+            'likeable',
+            config('like.models.like'),
+            config('like.column_names.user_foreign_key'),
+            'likeable_id'
+        )
+            ->withTimestamps();
     }
 }

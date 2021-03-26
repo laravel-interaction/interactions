@@ -31,7 +31,8 @@ trait Voteable
 {
     public function downvoters(): MorphToMany
     {
-        return $this->voters()->wherePivot('upvote', false);
+        return $this->voters()
+            ->wherePivot('upvote', false);
     }
 
     public function downvotersCount(): int
@@ -47,7 +48,12 @@ trait Voteable
 
     public function downvotersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
-        return Interaction::numberForHumans($this->downvotersCount(), $precision, $mode, $divisors ?? config('vote.divisors'));
+        return Interaction::numberForHumans(
+            $this->downvotersCount(),
+            $precision,
+            $mode,
+            $divisors ?? config('vote.divisors')
+        );
     }
 
     public function isDownvotedBy(Model $user): bool
@@ -63,7 +69,9 @@ trait Voteable
         }
 
         return ($this->relationLoaded('votes') ? $this->voteableVotes : $this->voteableVotes())
-            ->where(config('vote.column_names.user_foreign_key'), $user->getKey())->where('upvote', false)->count() > 0;
+            ->where(config('vote.column_names.user_foreign_key'), $user->getKey())
+            ->where('upvote', false)
+            ->count() > 0;
     }
 
     public function isNotDownvotedBy(Model $user): bool
@@ -94,7 +102,9 @@ trait Voteable
         }
 
         return ($this->relationLoaded('voteableVotes') ? $this->voteableVotes : $this->voteableVotes())
-            ->where(config('vote.column_names.user_foreign_key'), $user->getKey())->where('upvote', true)->count() > 0;
+            ->where(config('vote.column_names.user_foreign_key'), $user->getKey())
+            ->where('upvote', true)
+            ->count() > 0;
     }
 
     /**
@@ -115,7 +125,8 @@ trait Voteable
         }
 
         return ($this->relationLoaded('votes') ? $this->voteableVotes : $this->voteableVotes())
-            ->where(config('vote.column_names.user_foreign_key'), $user->getKey())->count() > 0;
+            ->where(config('vote.column_names.user_foreign_key'), $user->getKey())
+            ->count() > 0;
     }
 
     public function scopeWhereDownvotedBy(Builder $query, Model $user): Builder
@@ -180,7 +191,8 @@ trait Voteable
 
     public function upvoters(): MorphToMany
     {
-        return $this->voters()->wherePivot('upvote', true);
+        return $this->voters()
+            ->wherePivot('upvote', true);
     }
 
     public function upvotersCount(): int
@@ -196,7 +208,12 @@ trait Voteable
 
     public function upvotersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
-        return Interaction::numberForHumans($this->upvotersCount(), $precision, $mode, $divisors ?? config('vote.divisors'));
+        return Interaction::numberForHumans(
+            $this->upvotersCount(),
+            $precision,
+            $mode,
+            $divisors ?? config('vote.divisors')
+        );
     }
 
     /**
@@ -218,7 +235,8 @@ trait Voteable
             config('vote.models.vote'),
             null,
             config('vote.column_names.user_foreign_key')
-        )->withTimestamps()->withPivot('upvote');
+        )->withTimestamps()
+            ->withPivot('upvote');
     }
 
     public function votersCount(): int
@@ -234,7 +252,12 @@ trait Voteable
 
     public function votersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
-        return Interaction::numberForHumans($this->votersCount(), $precision, $mode, $divisors ?? config('vote.divisors'));
+        return Interaction::numberForHumans(
+            $this->votersCount(),
+            $precision,
+            $mode,
+            $divisors ?? config('vote.divisors')
+        );
     }
 
     protected function isVoter($user): bool
