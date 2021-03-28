@@ -49,8 +49,7 @@ trait Fan
      */
     public function like(Model $object): void
     {
-        $thisHasLiked = $this->hasLiked($object);
-        if ($thisHasLiked) {
+        if ($this->hasLiked($object)) {
             return;
         }
 
@@ -72,8 +71,7 @@ trait Fan
      */
     public function unlike(Model $object): void
     {
-        $thisHasNotLiked = $this->hasNotLiked($object);
-        if ($thisHasNotLiked) {
+        if ($this->hasNotLiked($object)) {
             return;
         }
 
@@ -92,8 +90,7 @@ trait Fan
             $class,
             'likeable',
             config('like.models.like'),
-            config('like.column_names.user_foreign_key'),
-            'likeable_id'
+            config('like.column_names.user_foreign_key')
         )
             ->withTimestamps();
     }

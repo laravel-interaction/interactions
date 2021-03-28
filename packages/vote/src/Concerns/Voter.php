@@ -19,8 +19,7 @@ trait Voter
      */
     public function cancelVote(Model $object): void
     {
-        $thisHasNotVoted = $this->hasNotVoted($object);
-        if ($thisHasNotVoted) {
+        if ($this->hasNotVoted($object)) {
             return;
         }
 
@@ -175,8 +174,7 @@ trait Voter
             $class,
             'voteable',
             config('vote.models.vote'),
-            config('vote.column_names.user_foreign_key'),
-            'voteable_id'
+            config('vote.column_names.user_foreign_key')
         )
             ->withTimestamps()
             ->withPivot('upvote');

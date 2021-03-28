@@ -39,8 +39,7 @@ trait Subscriber
      */
     public function subscribe(Model $object): void
     {
-        $thisHasSubscribed = $this->hasSubscribed($object);
-        if ($thisHasSubscribed) {
+        if ($this->hasSubscribed($object)) {
             return;
         }
 
@@ -74,8 +73,7 @@ trait Subscriber
      */
     public function unsubscribe(Model $object): void
     {
-        $thisHasNotSubscribed = $this->hasNotSubscribed($object);
-        if ($thisHasNotSubscribed) {
+        if ($this->hasNotSubscribed($object)) {
             return;
         }
 
@@ -94,8 +92,7 @@ trait Subscriber
             $class,
             'subscribable',
             config('subscribe.models.subscription'),
-            config('subscribe.column_names.user_foreign_key'),
-            'subscribable_id'
+            config('subscribe.column_names.user_foreign_key')
         )
             ->withTimestamps();
     }

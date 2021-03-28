@@ -19,8 +19,7 @@ trait Bookmarker
      */
     public function bookmark(Model $object): void
     {
-        $thisHasBookmarked = $this->hasBookmarked($object);
-        if ($thisHasBookmarked) {
+        if ($this->hasBookmarked($object)) {
             return;
         }
 
@@ -74,8 +73,7 @@ trait Bookmarker
      */
     public function unbookmark(Model $object): void
     {
-        $thisHasNotBookmarked = $this->hasNotBookmarked($object);
-        if ($thisHasNotBookmarked) {
+        if ($this->hasNotBookmarked($object)) {
             return;
         }
 
@@ -94,8 +92,7 @@ trait Bookmarker
             $class,
             'bookmarkable',
             config('bookmark.models.bookmark'),
-            config('bookmark.column_names.user_foreign_key'),
-            'bookmarkable_id'
+            config('bookmark.column_names.user_foreign_key')
         )
             ->withTimestamps();
     }
