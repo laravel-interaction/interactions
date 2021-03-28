@@ -14,13 +14,14 @@ class CreateBookmarksTable extends Migration
     public function up(): void
     {
         Schema::create(
-            config('bookmark.table_names.bookmarks'),
+            config('bookmark.table_names.pivot',config('bookmark.table_names.bookmarks')),
             function (Blueprint $table): void {
                 config('bookmark.uuids') ? $table->uuid('uuid') : $table->bigIncrements('id');
                 $table->unsignedBigInteger(config('bookmark.column_names.user_foreign_key'))->index()->comment('user_id');
-                $table->morphs('bookmarkable');
+                $morphName=config('bookmark.morph_name','bookmarkable');
+                $table->morphs($morphName);
                 $table->timestamps();
-                $table->unique([config('bookmark.column_names.user_foreign_key'), 'bookmarkable_type', 'bookmarkable_id']);
+                $table->unique([config('bookmark.column_names.user_foreign_key'), "{$morphName}_type","{$morphName}_id"]);
             }
         );
     }

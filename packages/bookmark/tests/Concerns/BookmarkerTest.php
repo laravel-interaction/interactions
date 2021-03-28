@@ -11,17 +11,23 @@ use LaravelInteraction\Bookmark\Tests\TestCase;
 
 class BookmarkerTest extends TestCase
 {
+    protected function getMorphs($name, $type, $id)
+    {
+        return [$type ?: $name . '_type', $id ?: $name . '_id'];
+    }
+
     public function testBookmark(): void
     {
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->bookmark($channel);
+        [$type,$id] = $this->getMorphs(config('bookmark.morph_name', 'bookmarkable'), null, null);
         $this->assertDatabaseHas(
             Bookmark::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-                'bookmarkable_type' => $channel->getMorphClass(),
-                'bookmarkable_id' => $channel->getKey(),
+                $type => $channel->getMorphClass(),
+                $id => $channel->getKey(),
             ]
         );
     }
@@ -31,12 +37,13 @@ class BookmarkerTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->bookmark($channel);
+        [$type,$id] = $this->getMorphs(config('bookmark.morph_name', 'bookmarkable'), null, null);
         $this->assertDatabaseHas(
             Bookmark::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-                'bookmarkable_type' => $channel->getMorphClass(),
-                'bookmarkable_id' => $channel->getKey(),
+                $type => $channel->getMorphClass(),
+                $id => $channel->getKey(),
             ]
         );
         $user->unbookmark($channel);
@@ -44,8 +51,8 @@ class BookmarkerTest extends TestCase
             Bookmark::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-                'bookmarkable_type' => $channel->getMorphClass(),
-                'bookmarkable_id' => $channel->getKey(),
+                $type => $channel->getMorphClass(),
+                $id => $channel->getKey(),
             ]
         );
     }
@@ -55,12 +62,13 @@ class BookmarkerTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->toggleBookmark($channel);
+        [$type,$id] = $this->getMorphs(config('bookmark.morph_name', 'bookmarkable'), null, null);
         $this->assertDatabaseHas(
             Bookmark::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-                'bookmarkable_type' => $channel->getMorphClass(),
-                'bookmarkable_id' => $channel->getKey(),
+                $type => $channel->getMorphClass(),
+                $id => $channel->getKey(),
             ]
         );
         $user->toggleBookmark($channel);
@@ -68,8 +76,8 @@ class BookmarkerTest extends TestCase
             Bookmark::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-                'bookmarkable_type' => $channel->getMorphClass(),
-                'bookmarkable_id' => $channel->getKey(),
+                $type => $channel->getMorphClass(),
+                $id => $channel->getKey(),
             ]
         );
     }

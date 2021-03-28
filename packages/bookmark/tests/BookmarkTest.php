@@ -50,7 +50,10 @@ class BookmarkTest extends TestCase
 
     public function testGetTable(): void
     {
-        self::assertSame(config('bookmark.table_names.bookmarks'), $this->bookmark->getTable());
+        self::assertSame(
+            config('bookmark.table_names.pivot', config('bookmark.table_names.bookmarks')),
+            $this->bookmark->getTable()
+        );
     }
 
     public function testBookmarker(): void

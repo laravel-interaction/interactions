@@ -33,7 +33,7 @@ class Bookmark extends MorphPivot
      */
     public function bookmarkable(): MorphTo
     {
-        return $this->morphTo();
+        return $this->morphTo(config('bookmark.morph_name'));
     }
 
     /**
@@ -74,7 +74,7 @@ class Bookmark extends MorphPivot
 
     public function getTable()
     {
-        return config('bookmark.table_names.bookmarks') ?: parent::getTable();
+        return config('bookmark.table_names.pivot', config('bookmark.table_names.bookmarks')) ?: parent::getTable();
     }
 
     public function isBookmarkedBy(Model $user): bool
@@ -95,7 +95,9 @@ class Bookmark extends MorphPivot
      */
     public function scopeWithType(Builder $query, string $type): Builder
     {
-        return $query->where('bookmarkable_type', app($type)->getMorphClass());
+        [$types, $id] = $this->getMorphs(config('bookmark.morph_name', 'bookmarkable'), null, null);
+
+        return $query->where($types, app($type)->getMorphClass());
     }
 
     /**

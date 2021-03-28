@@ -33,7 +33,7 @@ trait Bookmarker
     public function bookmarkerBookmarks(): HasMany
     {
         return $this->hasMany(
-            config('bookmark.models.bookmark'),
+            config('bookmark.models.pivot', config('bookmark.models.bookmark')),
             config('bookmark.column_names.user_foreign_key'),
             $this->getKeyName()
         );
@@ -46,11 +46,13 @@ trait Bookmarker
      */
     public function hasBookmarked(Model $object): bool
     {
+        [$type,$id] = $this->getMorphs(config('bookmark.morph_name', 'bookmarkable'), null, null);
+
         return ($this->relationLoaded(
             'bookmarkerBookmarks'
         ) ? $this->bookmarkerBookmarks : $this->bookmarkerBookmarks())
-            ->where('bookmarkable_id', $object->getKey())
-            ->where('bookmarkable_type', $object->getMorphClass())
+            ->where($id, $object->getKey())
+            ->where($type, $object->getMorphClass())
             ->count() > 0;
     }
 
@@ -90,9 +92,9 @@ trait Bookmarker
     {
         return $this->morphedByMany(
             $class,
-            'bookmarkable',
-            config('bookmark.models.bookmark'),
-            config('bookmark.column_names.user_foreign_key')
+            config('bookmark.morph_name', 'bookmarkable'),
+            config('bookmark.models.pivot', config('bookmark.models.bookmark')),
+            config('bookmark.column_names.user_foreign_key'),
         )
             ->withTimestamps();
     }
