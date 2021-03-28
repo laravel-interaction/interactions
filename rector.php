@@ -59,7 +59,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         [
             __DIR__ . '/packages',
             __DIR__ . '/changelog-linker.php',
-            //            __DIR__ . '/ecs.php',
+            __DIR__ . '/ecs.php',
+            __DIR__ . '/monorepo-builder.php',
             __DIR__ . '/rector.php',
         ]
     );
