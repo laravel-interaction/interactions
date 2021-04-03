@@ -10,6 +10,18 @@ PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLi
 
 ## Unreleased
 
+## [0.3.2] - 2021-03-28
+
+### Changed
+
+- [#14] Apply SetList::SYMPLIFY
+
+- [#12] Generate CHANGELOG.md
+
+### Removed
+
+- [#15] Remove specified related pivot key
+
 ## [0.3.1] - 2021-03-23
 
 ### Changed
@@ -42,3 +54,7 @@ PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLi
 [#4]: https://github.com/laravel-interaction/interactions/pull/4
 [#3]: https://github.com/laravel-interaction/interactions/pull/3
 [#2]: https://github.com/laravel-interaction/interactions/pull/2
+[#15]: https://github.com/laravel-interaction/interactions/pull/15
+[#14]: https://github.com/laravel-interaction/interactions/pull/14
+[#12]: https://github.com/laravel-interaction/interactions/pull/12
+[0.3.2]: https://github.com/laravel-interaction/interactions/compare/0.3.1...0.3.2
