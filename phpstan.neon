@@ -1,5 +1,13 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
 parameters:
     level: max
     paths:
-        - src
-        - tests
+        - packages
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Relations\\(.*?)::count\(\).#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Collection<LaravelInteraction\\(.*?)>|Illuminate\\Database\\Eloquent\\Relations\\HasMany::where\(\).#'
+        - '#Method LaravelInteraction\\(.*?)\\Tests\\Models\\(.*?)::(.*?)\(\) has parameter \$(.*?) with no typehint specified.#'
+        - '#Class App\\User not found.#'
