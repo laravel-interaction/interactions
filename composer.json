@@ -34,9 +34,6 @@
         "laravel-interaction/support": "self.version",
         "laravel-interaction/vote": "self.version"
     },
-    "conflict": {
-        "zing/coding-standard": "^3.3.3"
-    },
     "autoload": {
         "psr-4": {
             "LaravelInteraction\\Bookmark\\": "packages/bookmark/src",
