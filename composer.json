@@ -26,11 +26,12 @@
         "phpunit/phpunit": "^8.0,<8.5.12 || ^9.3.3",
         "symplify/changelog-linker": "^8.3 || ^9.2",
         "symplify/monorepo-builder": "^8.3 || ^9.2",
-        "zing/coding-standard": "^2.6 || ^3.2"
+        "zing/coding-standard": "^2.6 || ^3.4"
     },
     "replace": {
         "laravel-interaction/bookmark": "self.version",
         "laravel-interaction/like": "self.version",
+        "laravel-interaction/rate": "self.version",
         "laravel-interaction/subscribe": "self.version",
         "laravel-interaction/support": "self.version",
         "laravel-interaction/vote": "self.version"
@@ -39,6 +40,7 @@
         "psr-4": {
             "LaravelInteraction\\Bookmark\\": "packages/bookmark/src",
             "LaravelInteraction\\Like\\": "packages/like/src",
+            "LaravelInteraction\\Rate\\": "packages/rate/src",
             "LaravelInteraction\\Subscribe\\": "packages/subscribe/src",
             "LaravelInteraction\\Support\\": "packages/support/src",
             "LaravelInteraction\\Vote\\": "packages/vote/src"
@@ -48,6 +50,7 @@
         "psr-4": {
             "LaravelInteraction\\Bookmark\\Tests\\": "packages/bookmark/tests",
             "LaravelInteraction\\Like\\Tests\\": "packages/like/tests",
+            "LaravelInteraction\\Rate\\Tests\\": "packages/rate/tests",
             "LaravelInteraction\\Subscribe\\Tests\\": "packages/subscribe/tests",
             "LaravelInteraction\\Support\\Tests\\": "packages/support/tests",
             "LaravelInteraction\\Vote\\Tests\\": "packages/vote/tests"
@@ -84,6 +87,7 @@
                 "LaravelInteraction\\Subscribe\\SubscribeServiceProvider",
                 "LaravelInteraction\\Bookmark\\BookmarkServiceProvider",
                 "LaravelInteraction\\Like\\LikeServiceProvider",
+                "LaravelInteraction\\Rate\\RateServiceProvider",
                 "LaravelInteraction\\Vote\\VoteServiceProvider"
             ]
         }
