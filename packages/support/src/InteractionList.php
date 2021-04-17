@@ -11,4 +11,5 @@ class InteractionList
     public const LIKE = 'like';
 
     public const VOTE = 'vote';
+    public const RATE='rate';
 }
