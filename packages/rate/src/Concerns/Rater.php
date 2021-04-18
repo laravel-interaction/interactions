@@ -7,6 +7,7 @@ namespace LaravelInteraction\Rate\Concerns;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use LaravelInteraction\Rate\Rating;
 
 /**
  * @property-read \Illuminate\Database\Eloquent\Collection|\LaravelInteraction\Rate\Rating[] $raterRatings
@@ -18,11 +19,13 @@ trait Rater
      * @param \Illuminate\Database\Eloquent\Model $object
      * @param mixed $value
      */
-    public function rate(Model $object, $value = 1): void
+    public function rate(Model $object, $value = 1): Rating
     {
-        $this->ratedItems(get_class($object))
-            ->attach($object->getKey(), [
-                'rating' => $value,
+        return $this->raterRatings()
+            ->create([
+                'ratable_id'=> $object->getKey(),
+                'ratable_type'=> $object->getMorphClass(),
+                'rating' => $value
             ]);
     }
 
@@ -30,36 +33,31 @@ trait Rater
      * @param \Illuminate\Database\Eloquent\Model $object
      * @param mixed $value
      */
-    public function rateOnce(Model $object, $value = 1): void
+    public function rateOnce(Model $object, $value = 1): Rating
     {
-        $rating = ($this->relationLoaded('raterRatings') ? $this->raterRatings : $this->raterRatings())
-            ->where('ratable_id', $object->getKey())
-            ->where('ratable_type', $object->getMorphClass())
-            ->first();
-        if ($rating !== null) {
-            $rating->rating = $value;
-            $rating->save();
 
-            return;
-        }
-
-        $this->ratedItems(get_class($object))
-            ->attach($object->getKey(), [
-                'rating' => $value,
+        return $this->raterRatings()
+            ->updateOrCreate([
+                'ratable_id'=> $object->getKey(),
+                'ratable_type'=> $object->getMorphClass()
+            ],[
+                'rating' => $value
             ]);
     }
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
+     * @return bool
      */
-    public function unrate(Model $object): void
+    public function unrate(Model $object): bool
     {
         $hasNotRated = $this->hasNotRated($object);
         if ($hasNotRated) {
-            return;
+            return true;
         }
 
-        $this->ratedItems(get_class($object))
+        return (bool) $this->ratedItems(get_class($object))
             ->detach($object->getKey());
     }
 

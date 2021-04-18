@@ -7,6 +7,7 @@ namespace LaravelInteraction\Bookmark\Concerns;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use LaravelInteraction\Bookmark\Bookmark;
 
 /**
  * @property-read \Illuminate\Database\Eloquent\Collection|\LaravelInteraction\Bookmark\Bookmark[] $bookmarkerBookmarks
@@ -16,16 +17,22 @@ trait Bookmarker
 {
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     * @return \LaravelInteraction\Bookmark\Bookmark
      */
-    public function bookmark(Model $object): void
+    public function bookmark(Model $object):Bookmark
     {
-        $hasBookmarked = $this->hasBookmarked($object);
-        if ($hasBookmarked) {
-            return;
-        }
-
-        $this->bookmarks(get_class($object))
-            ->attach($object->getKey());
+        $attributes=[
+            'bookmarkable_id' => $object->getKey(),
+            'bookmarkable_type' => $object->getMorphClass(),
+        ];
+        return $this->bookmarkerBookmarks()
+            ->where($attributes)
+            ->firstOr(function () use ($attributes) {
+                if ($this->relationLoaded('bookmarkerBookmarks')) {
+                    $this->unsetRelation('bookmarkerBookmarks');
+                }
+                return $this->bookmarkerBookmarks()->create($attributes);
+            });
     }
 
     /**
@@ -62,24 +69,28 @@ trait Bookmarker
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     * @return bool|\LaravelInteraction\Bookmark\Bookmark
      */
-    public function toggleBookmark(Model $object): void
+    public function toggleBookmark(Model $object)
     {
-        $this->bookmarks(get_class($object))
-            ->toggle($object->getKey());
+        return $this->hasBookmarked($object) ? $this->unbookmark($object) : $this->bookmark($object);
     }
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
+     * @return bool
      */
-    public function unbookmark(Model $object): void
+    public function unbookmark(Model $object): bool
     {
         $hasNotBookmarked = $this->hasNotBookmarked($object);
         if ($hasNotBookmarked) {
-            return;
+            return true;
         }
-
-        $this->bookmarks(get_class($object))
+        if ($this->relationLoaded('bookmarkerBookmarks')) {
+            $this->unsetRelation('bookmarkerBookmarks');
+        }
+        return (bool) $this->bookmarks(get_class($object))
             ->detach($object->getKey());
     }
 
