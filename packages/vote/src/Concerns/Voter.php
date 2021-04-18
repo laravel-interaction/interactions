@@ -115,15 +115,20 @@ trait Voter
      */
     public function vote(Model $object, $upvote = true): Vote
     {
-        $attributes=[ 'voteable_id' => $object->getKey(),
-            'voteable_type' => $object->getMorphClass(),];
-        $values=[
-            'upvote'=>$upvote
+        $attributes = [
+            'voteable_id' => $object->getKey(),
+            'voteable_type' => $object->getMorphClass(),
         ];
-        $vote=$this->voterVotes()->where($attributes)->firstOrNew($attributes,$values);
+        $values = [
+            'upvote' => $upvote,
+        ];
+        $vote = $this->voterVotes()
+            ->where($attributes)
+            ->firstOrNew($attributes, $values);
         $vote->fill($values);
-        if ($vote->isDirty() ||!$vote->exists ) {
-            if ($this->relationLoaded('voterVotes')) {
+        if ($vote->isDirty() || ! $vote->exists) {
+            $voterVotesThisRelationLoaded = $this->relationLoaded('voterVotes');
+            if ($voterVotesThisRelationLoaded) {
                 $this->unsetRelation('voterVotes');
             }
             $vote->save();

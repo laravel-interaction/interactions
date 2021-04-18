@@ -21,9 +21,11 @@ trait Rater
      */
     public function rate(Model $object, $value = 1): Rating
     {
-        if ($this->relationLoaded('raterRatings')){
+        $raterRatingsThisRelationLoaded = $this->relationLoaded('raterRatings');
+        if ($raterRatingsThisRelationLoaded) {
             $this->unsetRelation('raterRatings');
         }
+
         return $this->raterRatings()
             ->create([
                 'ratable_id' => $object->getKey(),
@@ -38,23 +40,26 @@ trait Rater
      */
     public function rateOnce(Model $object, $value = 1): Rating
     {
-        $attributes=[
+        $attributes = [
             'ratable_id' => $object->getKey(),
             'ratable_type' => $object->getMorphClass(),
         ];
 
-        $values=[
+        $values = [
             'rating' => $value,
         ];
-      $rating=  $this->raterRatings()->where($attributes)->firstOrNew($attributes,$values);
+        $rating = $this->raterRatings()
+            ->where($attributes)
+            ->firstOrNew($attributes, $values);
         $rating->fill($values);
-        if ($rating->isDirty() ||!$rating->exists) {
-            if ( $this->relationLoaded('raterRatings'))
-            {
+        if ($rating->isDirty() || ! $rating->exists) {
+            $raterRatingsThisRelationLoaded = $this->relationLoaded('raterRatings');
+            if ($raterRatingsThisRelationLoaded) {
                 $this->unsetRelation('raterRatings');
             }
             $rating->save();
         }
+
         return $rating;
     }
 
