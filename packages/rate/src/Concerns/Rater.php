@@ -18,6 +18,7 @@ trait Rater
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
      * @param mixed $value
+     * @return \LaravelInteraction\Rate\Rating
      */
     public function rate(Model $object, $value = 1): Rating
     {
@@ -37,6 +38,7 @@ trait Rater
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
      * @param mixed $value
+     * @return \LaravelInteraction\Rate\Rating
      */
     public function rateOnce(Model $object, $value = 1): Rating
     {

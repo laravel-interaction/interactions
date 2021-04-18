@@ -11,3 +11,4 @@ parameters:
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Collection<LaravelInteraction\\(.*?)>|Illuminate\\Database\\Eloquent\\Relations\\HasMany::where\(\).#'
         - '#Method LaravelInteraction\\(.*?)\\Tests\\Models\\(.*?)::(.*?)\(\) has parameter \$(.*?) with no typehint specified.#'
         - '#Class App\\User not found.#'
+        - '#Method LaravelInteraction\\Rate\\Tests\\Models\\User::rate\(\) should return LaravelInteraction\\Rate\\Rating but returns Illuminate\\Database\\Eloquent\\Model.#'
