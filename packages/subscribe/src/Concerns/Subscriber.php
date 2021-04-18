@@ -50,14 +50,14 @@ trait Subscriber
         return $this->subscriberSubscriptions()
             ->where($attributes)
             ->firstOr(function () use ($attributes) {
-    $subscriberSubscriptionsThisRelationLoaded = $this->relationLoaded('subscriberSubscriptions');
-    if ($subscriberSubscriptionsThisRelationLoaded) {
-        $this->unsetRelation('subscriberSubscriptions');
-    }
+                $subscriberSubscriptionsThisRelationLoaded = $this->relationLoaded('subscriberSubscriptions');
+                if ($subscriberSubscriptionsThisRelationLoaded) {
+                    $this->unsetRelation('subscriberSubscriptions');
+                }
 
-    return $this->subscriberSubscriptions()
-        ->create($attributes);
-});
+                return $this->subscriberSubscriptions()
+                    ->create($attributes);
+            });
     }
 
     /**

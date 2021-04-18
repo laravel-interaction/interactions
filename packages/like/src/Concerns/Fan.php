@@ -60,14 +60,14 @@ trait Fan
         return $this->fanLikes()
             ->where($attributes)
             ->firstOr(function () use ($attributes) {
-    $fanLikesThisRelationLoaded = $this->relationLoaded('fanLikes');
-    if ($fanLikesThisRelationLoaded) {
-        $this->unsetRelation('fanLikes');
-    }
+                $fanLikesThisRelationLoaded = $this->relationLoaded('fanLikes');
+                if ($fanLikesThisRelationLoaded) {
+                    $this->unsetRelation('fanLikes');
+                }
 
-    return $this->fanLikes()
-        ->create($attributes);
-});
+                return $this->fanLikes()
+                    ->create($attributes);
+            });
     }
 
     /**
