@@ -47,25 +47,32 @@ trait Fan
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return \LaravelInteraction\Like\Like
      */
     public function like(Model $object): Like
     {
         $attributes = [
-            'likeable_id'=> $object->getKey(),
-            'likeable_type'=> $object->getMorphClass(),
+            'likeable_id' => $object->getKey(),
+            'likeable_type' => $object->getMorphClass(),
         ];
 
-        return $this->fanLikes()->where($attributes)->firstOr(function () use ($attributes) {
-            if ($this->relationLoaded('fanLikes')) {
-                $this->unsetRelation('fanLikes');
-            }
-            return $this->fanLikes()->create($attributes);
-        });
+        return $this->fanLikes()
+            ->where($attributes)
+            ->firstOr(function () use ($attributes) {
+    $fanLikesThisRelationLoaded = $this->relationLoaded('fanLikes');
+    if ($fanLikesThisRelationLoaded) {
+        $this->unsetRelation('fanLikes');
+    }
+
+    return $this->fanLikes()
+        ->create($attributes);
+});
     }
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return bool|\LaravelInteraction\Like\Like
      */
     public function toggleLike(Model $object)

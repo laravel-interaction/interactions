@@ -33,11 +33,12 @@ trait Voter
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return \LaravelInteraction\Vote\Vote
      */
     public function downvote(Model $object): Vote
     {
-       return $this->vote($object, false);
+        return $this->vote($object, false);
     }
 
     /**
@@ -98,26 +99,29 @@ trait Voter
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return \LaravelInteraction\Vote\Vote
      */
     public function upvote(Model $object): Vote
     {
-      return  $this->vote($object);
+        return $this->vote($object);
     }
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
      * @param bool $upvote
+     *
      * @return \LaravelInteraction\Vote\Vote
      */
     public function vote(Model $object, $upvote = true): Vote
     {
-       return $this->voterVotes()->updateOrCreate([
-            'voteable_id'=> $object->getKey(),
-            'voteable_type'=> $object->getMorphClass()
-        ],[
-            'upvote' => $upvote
-        ]);
+        return $this->voterVotes()
+            ->updateOrCreate([
+                'voteable_id' => $object->getKey(),
+                'voteable_type' => $object->getMorphClass(),
+            ], [
+                'upvote' => $upvote,
+            ]);
     }
 
     /**

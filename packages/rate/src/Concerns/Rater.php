@@ -23,9 +23,9 @@ trait Rater
     {
         return $this->raterRatings()
             ->create([
-                'ratable_id'=> $object->getKey(),
-                'ratable_type'=> $object->getMorphClass(),
-                'rating' => $value
+                'ratable_id' => $object->getKey(),
+                'ratable_type' => $object->getMorphClass(),
+                'rating' => $value,
             ]);
     }
 
@@ -35,13 +35,12 @@ trait Rater
      */
     public function rateOnce(Model $object, $value = 1): Rating
     {
-
         return $this->raterRatings()
             ->updateOrCreate([
-                'ratable_id'=> $object->getKey(),
-                'ratable_type'=> $object->getMorphClass()
-            ],[
-                'rating' => $value
+                'ratable_id' => $object->getKey(),
+                'ratable_type' => $object->getMorphClass(),
+            ], [
+                'rating' => $value,
             ]);
     }
 

@@ -37,6 +37,7 @@ trait Subscriber
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return \LaravelInteraction\Subscribe\Subscription
      */
     public function subscribe(Model $object): Subscription
@@ -46,12 +47,17 @@ trait Subscriber
             'subscribable_type' => $object->getMorphClass(),
         ];
 
-        return $this->subscriberSubscriptions()->where($attributes)->firstOr(function () use ($attributes) {
-            if ($this->relationLoaded('subscriberSubscriptions')) {
-                $this->unsetRelation('subscriberSubscriptions');
-            }
-            return $this->subscriberSubscriptions()->create($attributes);
-        });
+        return $this->subscriberSubscriptions()
+            ->where($attributes)
+            ->firstOr(function () use ($attributes) {
+    $subscriberSubscriptionsThisRelationLoaded = $this->relationLoaded('subscriberSubscriptions');
+    if ($subscriberSubscriptionsThisRelationLoaded) {
+        $this->unsetRelation('subscriberSubscriptions');
+    }
+
+    return $this->subscriberSubscriptions()
+        ->create($attributes);
+});
     }
 
     /**
@@ -68,6 +74,7 @@ trait Subscriber
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return bool|\LaravelInteraction\Subscribe\Subscription
      */
     public function toggleSubscribe(Model $object)

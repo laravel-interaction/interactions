@@ -17,21 +17,26 @@ trait Bookmarker
 {
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return \LaravelInteraction\Bookmark\Bookmark
      */
-    public function bookmark(Model $object):Bookmark
+    public function bookmark(Model $object): Bookmark
     {
-        $attributes=[
+        $attributes = [
             'bookmarkable_id' => $object->getKey(),
             'bookmarkable_type' => $object->getMorphClass(),
         ];
+
         return $this->bookmarkerBookmarks()
             ->where($attributes)
             ->firstOr(function () use ($attributes) {
-                if ($this->relationLoaded('bookmarkerBookmarks')) {
+                $bookmarkerBookmarksThisRelationLoaded = $this->relationLoaded('bookmarkerBookmarks');
+                if ($bookmarkerBookmarksThisRelationLoaded) {
                     $this->unsetRelation('bookmarkerBookmarks');
                 }
-                return $this->bookmarkerBookmarks()->create($attributes);
+
+                return $this->bookmarkerBookmarks()
+                    ->create($attributes);
             });
     }
 
@@ -69,6 +74,7 @@ trait Bookmarker
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $object
+     *
      * @return bool|\LaravelInteraction\Bookmark\Bookmark
      */
     public function toggleBookmark(Model $object)
@@ -87,9 +93,11 @@ trait Bookmarker
         if ($hasNotBookmarked) {
             return true;
         }
-        if ($this->relationLoaded('bookmarkerBookmarks')) {
+        $bookmarkerBookmarksThisRelationLoaded = $this->relationLoaded('bookmarkerBookmarks');
+        if ($bookmarkerBookmarksThisRelationLoaded) {
             $this->unsetRelation('bookmarkerBookmarks');
         }
+
         return (bool) $this->bookmarks(get_class($object))
             ->detach($object->getKey());
     }
