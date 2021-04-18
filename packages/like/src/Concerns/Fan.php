@@ -60,8 +60,8 @@ trait Fan
         return $this->fanLikes()
             ->where($attributes)
             ->firstOr(function () use ($attributes) {
-                $fanLikesThisRelationLoaded = $this->relationLoaded('fanLikes');
-                if ($fanLikesThisRelationLoaded) {
+                $fanLikesLoaded = $this->relationLoaded('fanLikes');
+                if ($fanLikesLoaded) {
                     $this->unsetRelation('fanLikes');
                 }
 
@@ -90,8 +90,10 @@ trait Fan
         $hasNotLiked = $this->hasNotLiked($object);
         if ($hasNotLiked) {
             return true;
+        }    $fanLikesLoaded = $this->relationLoaded('fanLikes');
+        if ($fanLikesLoaded) {
+            $this->unsetRelation('fanLikes');
         }
-
         return (bool) $this->likedItems(get_class($object))
             ->detach($object->getKey());
     }

@@ -50,8 +50,8 @@ trait Subscriber
         return $this->subscriberSubscriptions()
             ->where($attributes)
             ->firstOr(function () use ($attributes) {
-                $subscriberSubscriptionsThisRelationLoaded = $this->relationLoaded('subscriberSubscriptions');
-                if ($subscriberSubscriptionsThisRelationLoaded) {
+                $subscriberSubscriptionsLoaded = $this->relationLoaded('subscriberSubscriptions');
+                if ($subscriberSubscriptionsLoaded) {
                     $this->unsetRelation('subscriberSubscriptions');
                 }
 
@@ -93,7 +93,10 @@ trait Subscriber
         if ($hasNotSubscribed) {
             return true;
         }
-
+        $subscriberSubscriptionsLoaded = $this->relationLoaded('subscriberSubscriptions');
+        if ($subscriberSubscriptionsLoaded) {
+            $this->unsetRelation('subscriberSubscriptions');
+        }
         return (bool) $this->subscribedItems(get_class($object))
             ->detach($object->getKey());
     }

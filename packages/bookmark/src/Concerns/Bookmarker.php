@@ -30,8 +30,8 @@ trait Bookmarker
         return $this->bookmarkerBookmarks()
             ->where($attributes)
             ->firstOr(function () use ($attributes) {
-                $bookmarkerBookmarksThisRelationLoaded = $this->relationLoaded('bookmarkerBookmarks');
-                if ($bookmarkerBookmarksThisRelationLoaded) {
+                $bookmarkerBookmarksLoaded = $this->relationLoaded('bookmarkerBookmarks');
+                if ($bookmarkerBookmarksLoaded) {
                     $this->unsetRelation('bookmarkerBookmarks');
                 }
 
@@ -93,8 +93,8 @@ trait Bookmarker
         if ($hasNotBookmarked) {
             return true;
         }
-        $bookmarkerBookmarksThisRelationLoaded = $this->relationLoaded('bookmarkerBookmarks');
-        if ($bookmarkerBookmarksThisRelationLoaded) {
+        $bookmarkerBookmarksLoaded = $this->relationLoaded('bookmarkerBookmarks');
+        if ($bookmarkerBookmarksLoaded) {
             $this->unsetRelation('bookmarkerBookmarks');
         }
 

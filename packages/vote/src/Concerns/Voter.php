@@ -26,7 +26,10 @@ trait Voter
         if ($hasNotVoted) {
             return true;
         }
-
+        $voterVotesLoaded = $this->relationLoaded('voterVotes');
+        if ($voterVotesLoaded) {
+            $this->unsetRelation('voterVotes');
+        }
         return (bool) $this->votedItems(get_class($object))
             ->detach($object->getKey());
     }
@@ -48,7 +51,7 @@ trait Voter
      */
     public function hasDownvoted(Model $object): bool
     {
-        return ($this->relationLoaded('votes') ? $this->voterVotes : $this->voterVotes())
+        return ($this->relationLoaded('voterVotes') ? $this->voterVotes : $this->voterVotes())
             ->where('voteable_id', $object->getKey())
             ->where('voteable_type', $object->getMorphClass())
             ->where('upvote', false)
@@ -77,7 +80,7 @@ trait Voter
      */
     public function hasUpvoted(Model $object): bool
     {
-        return ($this->relationLoaded('votes') ? $this->voterVotes : $this->voterVotes())
+        return ($this->relationLoaded('voterVotes') ? $this->voterVotes : $this->voterVotes())
             ->where('voteable_id', $object->getKey())
             ->where('voteable_type', $object->getMorphClass())
             ->where('upvote', true)
@@ -91,7 +94,7 @@ trait Voter
      */
     public function hasVoted(Model $object): bool
     {
-        return ($this->relationLoaded('votes') ? $this->voterVotes : $this->voterVotes())
+        return ($this->relationLoaded('voterVotes') ? $this->voterVotes : $this->voterVotes())
             ->where('voteable_id', $object->getKey())
             ->where('voteable_type', $object->getMorphClass())
             ->count() > 0;
@@ -127,8 +130,8 @@ trait Voter
             ->firstOrNew($attributes, $values);
         $vote->fill($values);
         if ($vote->isDirty() || ! $vote->exists) {
-            $voterVotesThisRelationLoaded = $this->relationLoaded('voterVotes');
-            if ($voterVotesThisRelationLoaded) {
+            $voterVotesLoaded = $this->relationLoaded('voterVotes');
+            if ($voterVotesLoaded) {
                 $this->unsetRelation('voterVotes');
             }
             $vote->save();

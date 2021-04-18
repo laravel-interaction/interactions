@@ -21,8 +21,8 @@ trait Rater
      */
     public function rate(Model $object, $value = 1): Rating
     {
-        $raterRatingsThisRelationLoaded = $this->relationLoaded('raterRatings');
-        if ($raterRatingsThisRelationLoaded) {
+        $raterRatingsLoaded = $this->relationLoaded('raterRatings');
+        if ($raterRatingsLoaded) {
             $this->unsetRelation('raterRatings');
         }
 
@@ -53,8 +53,8 @@ trait Rater
             ->firstOrNew($attributes, $values);
         $rating->fill($values);
         if ($rating->isDirty() || ! $rating->exists) {
-            $raterRatingsThisRelationLoaded = $this->relationLoaded('raterRatings');
-            if ($raterRatingsThisRelationLoaded) {
+            $raterRatingsLoaded = $this->relationLoaded('raterRatings');
+            if ($raterRatingsLoaded) {
                 $this->unsetRelation('raterRatings');
             }
             $rating->save();
@@ -74,7 +74,10 @@ trait Rater
         if ($hasNotRated) {
             return true;
         }
-
+        $raterRatingsLoaded = $this->relationLoaded('raterRatings');
+        if ($raterRatingsLoaded) {
+            $this->unsetRelation('raterRatings');
+        }
         return (bool) $this->ratedItems(get_class($object))
             ->detach($object->getKey());
     }
