@@ -80,6 +80,7 @@ trait Rater
         if ($raterRatingsLoaded) {
             $this->unsetRelation('raterRatings');
         }
+
         return (bool) $this->ratedItems(get_class($object))
             ->detach($object->getKey());
     }

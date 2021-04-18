@@ -30,6 +30,7 @@ trait Voter
         if ($voterVotesLoaded) {
             $this->unsetRelation('voterVotes');
         }
+
         return (bool) $this->votedItems(get_class($object))
             ->detach($object->getKey());
     }
