@@ -31,6 +31,7 @@
     "replace": {
         "laravel-interaction/bookmark": "self.version",
         "laravel-interaction/favorite": "self.version",
+        "laravel-interaction/follow": "self.version",
         "laravel-interaction/like": "self.version",
         "laravel-interaction/rate": "self.version",
         "laravel-interaction/subscribe": "self.version",
@@ -41,6 +42,7 @@
         "psr-4": {
             "LaravelInteraction\\Bookmark\\": "packages/bookmark/src",
             "LaravelInteraction\\Favorite\\": "packages/favorite/src",
+            "LaravelInteraction\\Follow\\": "packages/follow/src",
             "LaravelInteraction\\Like\\": "packages/like/src",
             "LaravelInteraction\\Rate\\": "packages/rate/src",
             "LaravelInteraction\\Subscribe\\": "packages/subscribe/src",
@@ -52,6 +54,7 @@
         "psr-4": {
             "LaravelInteraction\\Bookmark\\Tests\\": "packages/bookmark/tests",
             "LaravelInteraction\\Favorite\\Tests\\": "packages/favorite/tests",
+            "LaravelInteraction\\Follow\\Tests\\": "packages/follow/tests",
             "LaravelInteraction\\Like\\Tests\\": "packages/like/tests",
             "LaravelInteraction\\Rate\\Tests\\": "packages/rate/tests",
             "LaravelInteraction\\Subscribe\\Tests\\": "packages/subscribe/tests",
@@ -89,6 +92,7 @@
             "providers": [
                 "LaravelInteraction\\Subscribe\\SubscribeServiceProvider",
                 "LaravelInteraction\\Favorite\\FavoriteServiceProvider",
+                "LaravelInteraction\\Follow\\FollowServiceProvider",
                 "LaravelInteraction\\Bookmark\\BookmarkServiceProvider",
                 "LaravelInteraction\\Like\\LikeServiceProvider",
                 "LaravelInteraction\\Rate\\RateServiceProvider",
