@@ -36,10 +36,10 @@ class TestCase extends BaseTestCase
     protected function getEnvironmentSetUp($app): void
     {
         config([
-                'database.default' => 'testing',
-                'follow.models.user' => User::class,
-                'follow.uuids' => true,
-            ]);
+            'database.default' => 'testing',
+            'follow.models.user' => User::class,
+            'follow.uuids' => true,
+        ]);
     }
 
     protected function getPackageProviders($app): array
