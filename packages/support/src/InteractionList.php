@@ -13,4 +13,5 @@ class InteractionList
     public const VOTE = 'vote';
 
     public const RATE = 'rate';
+    public const FAVORITE = 'favorite';
 }
