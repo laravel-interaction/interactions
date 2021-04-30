@@ -30,6 +30,7 @@
     },
     "replace": {
         "laravel-interaction/bookmark": "self.version",
+        "laravel-interaction/clap": "self.version",
         "laravel-interaction/favorite": "self.version",
         "laravel-interaction/follow": "self.version",
         "laravel-interaction/like": "self.version",
@@ -41,6 +42,7 @@
     "autoload": {
         "psr-4": {
             "LaravelInteraction\\Bookmark\\": "packages/bookmark/src",
+            "LaravelInteraction\\Clap\\": "packages/clap/src",
             "LaravelInteraction\\Favorite\\": "packages/favorite/src",
             "LaravelInteraction\\Follow\\": "packages/follow/src",
             "LaravelInteraction\\Like\\": "packages/like/src",
@@ -53,6 +55,7 @@
     "autoload-dev": {
         "psr-4": {
             "LaravelInteraction\\Bookmark\\Tests\\": "packages/bookmark/tests",
+            "LaravelInteraction\\Clap\\Tests\\": "packages/clap/tests",
             "LaravelInteraction\\Favorite\\Tests\\": "packages/favorite/tests",
             "LaravelInteraction\\Follow\\Tests\\": "packages/follow/tests",
             "LaravelInteraction\\Like\\Tests\\": "packages/like/tests",
@@ -90,6 +93,7 @@
     "extra": {
         "laravel": {
             "providers": [
+                "LaravelInteraction\\Clap\\ClapServiceProvider",
                 "LaravelInteraction\\Subscribe\\SubscribeServiceProvider",
                 "LaravelInteraction\\Favorite\\FavoriteServiceProvider",
                 "LaravelInteraction\\Follow\\FollowServiceProvider",
