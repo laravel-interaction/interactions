@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       # required for matrix of packages set
       - uses: shivammathur/setup-php@v2
@@ -43,7 +43,7 @@ jobs:
     name: Split tag of ${{ matrix.package }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       - id: get-current-tag
         uses: zingimmick/github-action-get-current-tag@v1
