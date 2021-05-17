@@ -21,40 +21,31 @@ use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import(RectorSetList::CUSTOM);
+    $containerConfigurator->import(LaravelSetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL);
+    $containerConfigurator->import(DoctrineSetList::DOCTRINE_CODE_QUALITY);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
+    $containerConfigurator->import(SetList::PHP_70);
+    $containerConfigurator->import(SetList::PHP_71);
+    $containerConfigurator->import(SetList::PHP_72);
+
     $parameters = $containerConfigurator->parameters();
-    $parameters->set(
-        Option::SETS,
-        [
-            DoctrineSetList::DOCTRINE_CODE_QUALITY,
-            SetList::CODING_STYLE,
-            SetList::CODE_QUALITY,
-            SetList::CODE_QUALITY_STRICT,
-            SetList::DEAD_CODE,
-            SetList::PRIVATIZATION,
-            SetList::NAMING,
-            PHPUnitSetList::PHPUNIT_CODE_QUALITY,
-            SetList::PHP_70,
-            SetList::PHP_71,
-            SetList::PHP_72,
-            SetList::EARLY_RETURN,
-        ]
-    );
     $parameters->set(
         Option::SKIP,
         [
             '*/migrations/*',
-            FinalizeClassesWithoutChildrenRector::class,
-            ChangeReadOnlyVariableWithDefaultValueToConstantRector::class,
-            AddSeeTestAnnotationRector::class,
-            RepeatedLiteralToClassConstantRector::class,
-            RenameParamToMatchTypeRector::class,
-            RenameVariableToMatchMethodCallReturnTypeRector::class,
-            EncapsedStringsToSprintfRector::class,
-            PrivatizeLocalPropertyToPrivatePropertyRector::class,
-            PrivatizeLocalGetterToPropertyRector::class,
             VarConstantCommentRector::class,
+            EncapsedStringsToSprintfRector::class,
             RemoveUselessParamTagRector::class,
             RemoveUselessReturnTagRector::class,
+            RenameVariableToMatchMethodCallReturnTypeRector::class,
+            RenameParamToMatchTypeRector::class,
+            AddSeeTestAnnotationRector::class,
+            ChangeReadOnlyVariableWithDefaultValueToConstantRector::class,
+            FinalizeClassesWithoutChildrenRector::class,
+            RepeatedLiteralToClassConstantRector::class,
+            PrivatizeLocalGetterToPropertyRector::class,
+            PrivatizeLocalPropertyToPrivatePropertyRector::class,
         ]
     );
     $parameters->set(
