@@ -8,6 +8,7 @@ use Rector\Core\Configuration\Option;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\Doctrine\Set\DoctrineSetList;
+use Rector\Laravel\Set\LaravelSetList;
 use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
@@ -19,6 +20,7 @@ use Rector\Privatization\Rector\MethodCall\PrivatizeLocalGetterToPropertyRector;
 use Rector\Privatization\Rector\Property\PrivatizeLocalPropertyToPrivatePropertyRector;
 use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Zing\CodingStandard\Set\RectorSetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(RectorSetList::CUSTOM);
