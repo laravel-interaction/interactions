@@ -43,15 +43,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2.3.4
-
-      # Uses an action in the root directory
-      - uses: symplify/github-action-monorepo-split@2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          package-directory: 'packages/${{ matrix.package }}'
-          split-repository-organization: 'laravel-interaction'
-          split-repository-name: '${{ matrix.package }}'
-          branch: master
-          user-email: zingimmick@outlook.com
-          user-name: zingimmick
+          fetch-depth: '0'
+          persist-credentials: 'false'
+      - run: |
+          git remote add ${{ matrix.package }} https://zingimmick:${{ secrets.ACCESS_TOKEN }}@github.com/laravel-interaction/${{ matrix.package }}.git || true
+          ./bin/splitsh-lite --prefix=packages/${{ matrix.package }}
+          SHA1=$(./bin/splitsh-lite --prefix=packages/${{ matrix.package }})
+          git push ${{ matrix.package }} "$SHA1:$GITHUB_REF" -f
