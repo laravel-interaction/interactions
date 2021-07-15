@@ -50,11 +50,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     );
     $parameters->set(
         Option::PATHS,
-        [
-            __DIR__ . '/packages',
-            __DIR__ . '/ecs.php',
-            __DIR__ . '/monorepo-builder.php',
-            __DIR__ . '/rector.php',
-        ]
+        [__DIR__ . '/packages', __DIR__ . '/ecs.php', __DIR__ . '/monorepo-builder.php', __DIR__ . '/rector.php']
     );
 };
