@@ -321,8 +321,8 @@ trait Voteable
         if (method_exists($this, 'loadSum')) {
             $this->loadSum([
                 'voteableVotes as voteable_votes_sum_upvotes' => function ($query) {
-                                return $query->where('votes', '>', 0);
-                            },
+                    return $query->where('votes', '>', 0);
+                },
             ], 'votes');
         } else {
             $this->voteable_votes_sum_upvotes = $this->voteableVotes()
@@ -362,8 +362,8 @@ trait Voteable
         if (method_exists($this, 'loadSum')) {
             $this->loadSum([
                 'voteableVotes as voteable_votes_sum_downvotes' => function ($query) {
-                                return $query->where('votes', '<', 0);
-                            },
+                    return $query->where('votes', '<', 0);
+                },
             ], 'votes');
         } else {
             $this->voteable_votes_sum_downvotes = $this->voteableVotes()

@@ -385,6 +385,7 @@ class VoteableTest extends TestCase
     public function testSumVotes($modelClass): void
     {
         $user = User::query()->create();
+        $other = User::query()->create();
         $model = $modelClass::query()->create();
         $user->vote($model);
         self::assertSame(1, $model->sumVotes());
@@ -392,6 +393,12 @@ class VoteableTest extends TestCase
         self::assertSame(1, $model->sumVotes());
         $model->loadSumVotes();
         self::assertSame(0, $model->sumVotes());
+        $user->upvote($model, 3);
+        $model->loadSumVotes();
+        self::assertSame(3, $model->sumVotes());
+        $other->downvote($model, 2);
+        $model->loadSumVotes();
+        self::assertSame(1, $model->sumVotes());
     }
 
     /**
