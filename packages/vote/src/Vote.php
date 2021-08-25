@@ -80,7 +80,7 @@ class Vote extends MorphPivot
 
     public function isUpvote(): bool
     {
-        return $this->upvote;
+        return $this->votes > 0;
     }
 
     public function isVotedBy(Model $user): bool
