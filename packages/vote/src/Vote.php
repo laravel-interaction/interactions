@@ -19,7 +19,7 @@ use LaravelInteraction\Vote\Events\Voted;
  * @property \Illuminate\Database\Eloquent\Model $user
  * @property \Illuminate\Database\Eloquent\Model $voter
  * @property \Illuminate\Database\Eloquent\Model $voteable
- * @property bool $upvote
+ * @property int $votes
  *
  * @method static \LaravelInteraction\Vote\Vote|\Illuminate\Database\Eloquent\Builder withType(string $type)
  * @method static \LaravelInteraction\Vote\Vote|\Illuminate\Database\Eloquent\Builder query()
