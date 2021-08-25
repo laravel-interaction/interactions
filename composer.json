@@ -88,6 +88,9 @@
         ]
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "0.6-dev"
+        },
         "laravel": {
             "providers": [
                 "LaravelInteraction\\Clap\\ClapServiceProvider",
