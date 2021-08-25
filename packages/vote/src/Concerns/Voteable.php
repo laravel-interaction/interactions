@@ -19,7 +19,9 @@ use function is_a;
  * @property-read string|int|null $voters_count
  * @property-read string|int|null $upvoters_count
  * @property-read string|int|null $downvoters_count
- * @property-read string|float
+ * @property-read string|int|null $voteable_votes_sum_votes
+ * @property-read string|int|null $voteable_votes_sum_upvotes
+ * @property-read string|int|null $voteable_votes_sum_downvotes
  *
  * @method static static|\Illuminate\Database\Eloquent\Builder whereVotedBy(\Illuminate\Database\Eloquent\Model $user)
  * @method static static|\Illuminate\Database\Eloquent\Builder whereNotVotedBy(\Illuminate\Database\Eloquent\Model $user)
