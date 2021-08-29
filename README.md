@@ -11,6 +11,23 @@
 
 > **Requires [PHP 7.2.0+](https://php.net/releases/)**
 
+## Single interaction
+
+- [Bookmark](https://github.com/laravel-interaction/bookmark): ⭐ User bookmark/unbookmark behaviour for Laravel.
+- [Favorite](https://github.com/laravel-interaction/favorite): ❤️ User favorite/unfavorite behavior for Laravel.
+- [Follow](https://github.com/laravel-interaction/follow): 👥 User follow/unfollow behaviour for Laravel.
+- [Like](https://github.com/laravel-interaction/like): 💗 User like/unlike behaviour for Laravel.
+- [Subscribe](https://github.com/laravel-interaction/subscribe): 🔔 User subscribe/unsubscribe behaviour for Laravel.
+
+## Multiple interactions
+
+- [Clap](https://github.com/laravel-interaction/clap): 👏 User clap/UndoApplause behavior for Laravel.
+- [Rate](https://github.com/laravel-interaction/rate): 😄 User rate/unrate behaviour for Laravel.
+
+## Reversible interaction
+
+- [Vote](https://github.com/laravel-interaction/vote): 👍 User upvote/downvote behaviour for Laravel.
+
 ## License
 
 Laravel Interactions is an open-sourced software licensed under the [MIT license](LICENSE).
