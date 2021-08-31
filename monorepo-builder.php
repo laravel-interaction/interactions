@@ -31,4 +31,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'prefer-stable' => true,
         ]
     );
+    $parameters->set(Option::PACKAGE_ALIAS_FORMAT, '<major>.x-dev');
 };
