@@ -1,10 +1,9 @@
-name: "Release"
+name: Auto-Release
 
 on:
   push:
-
-env:
-  COMPOSER_FLAGS: "--ansi --no-interaction --no-progress --no-suggest --prefer-dist"
+    tags:
+      - "*"
 
 jobs:
   build:
@@ -17,7 +16,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: '0.6.1'
-          release_name: '0.6.1'
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
           draft: true
           body: TODO
