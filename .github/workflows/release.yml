@@ -1,0 +1,23 @@
+name: "Release"
+
+on:
+  push:
+
+env:
+  COMPOSER_FLAGS: "--ansi --no-interaction --no-progress --no-suggest --prefer-dist"
+
+jobs:
+  build:
+    name: Auto Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: '0.6.1'
+          release_name: '0.6.1'
+          draft: true
+          body: TODO
