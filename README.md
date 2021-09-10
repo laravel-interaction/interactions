@@ -18,6 +18,7 @@
 - [Follow](https://github.com/laravel-interaction/follow): 👥 User follow/unfollow behaviour for Laravel.
 - [Like](https://github.com/laravel-interaction/like): 💗 User like/unlike behaviour for Laravel.
 - [Subscribe](https://github.com/laravel-interaction/subscribe): 🔔 User subscribe/unsubscribe behaviour for Laravel.
+- [Block](https://github.com/laravel-interaction/block): 🚧 User block/unblock behaviour for Laravel.
 
 ## Multiple interactions
 
