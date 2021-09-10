@@ -40,8 +40,6 @@ jobs:
       fail-fast: false
       matrix:
         package: ${{fromJson(needs.provide-packages-json.outputs.matrix)}}
-        exclude:
-          - package: block
 
     name: Monorepo Split of ${{ matrix.package }}
 
