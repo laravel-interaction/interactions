@@ -31,6 +31,7 @@
         "phpunit/phpunit": "^8.5.12"
     },
     "replace": {
+        "laravel-interaction/block": "self.version",
         "laravel-interaction/bookmark": "self.version",
         "laravel-interaction/clap": "self.version",
         "laravel-interaction/favorite": "self.version",
@@ -43,6 +44,7 @@
     },
     "autoload": {
         "psr-4": {
+            "LaravelInteraction\\Block\\": "packages/block/src",
             "LaravelInteraction\\Bookmark\\": "packages/bookmark/src",
             "LaravelInteraction\\Clap\\": "packages/clap/src",
             "LaravelInteraction\\Favorite\\": "packages/favorite/src",
@@ -56,6 +58,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "LaravelInteraction\\Block\\Tests\\": "packages/block/tests",
             "LaravelInteraction\\Bookmark\\Tests\\": "packages/bookmark/tests",
             "LaravelInteraction\\Clap\\Tests\\": "packages/clap/tests",
             "LaravelInteraction\\Favorite\\Tests\\": "packages/favorite/tests",
@@ -93,6 +96,7 @@
         },
         "laravel": {
             "providers": [
+                "LaravelInteraction\\Block\\BlockServiceProvider",
                 "LaravelInteraction\\Clap\\ClapServiceProvider",
                 "LaravelInteraction\\Subscribe\\SubscribeServiceProvider",
                 "LaravelInteraction\\Favorite\\FavoriteServiceProvider",
