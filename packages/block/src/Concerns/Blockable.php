@@ -38,9 +38,7 @@ trait Blockable
             return $this->blockers->contains($user);
         }
 
-        return ($this->relationLoaded(
-            'blockableBlocks'
-        ) ? $this->blockableBlocks : $this->blockableBlocks())
+        return ($this->relationLoaded('blockableBlocks') ? $this->blockableBlocks : $this->blockableBlocks())
             ->where(config('block.column_names.user_foreign_key'), $user->getKey())
             ->count() > 0;
     }

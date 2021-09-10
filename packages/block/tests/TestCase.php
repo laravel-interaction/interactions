@@ -35,13 +35,11 @@ class TestCase extends BaseTestCase
 
     protected function getEnvironmentSetUp($app): void
     {
-        config(
-            [
+        config([
                 'database.default' => 'testing',
                 'block.models.user' => User::class,
                 'block.uuids' => false,
-            ]
-        );
+            ]);
     }
 
     protected function getPackageProviders($app): array

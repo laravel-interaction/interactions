@@ -22,9 +22,7 @@ trait Blocker
 
     public function hasBlocked(Model $object): bool
     {
-        return ($this->relationLoaded(
-            'blockerBlocks'
-        ) ? $this->blockerBlocks : $this->blockerBlocks())
+        return ($this->relationLoaded('blockerBlocks') ? $this->blockerBlocks : $this->blockerBlocks())
             ->where('blockable_id', $object->getKey())
             ->where('blockable_type', $object->getMorphClass())
             ->count() > 0;
