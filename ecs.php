@@ -22,7 +22,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             '*/migrations/*',
             YodaStyleFixer::class => null,
             PhpUnitTestClassRequiresCoversFixer::class,
-            PhpdocTypesOrderFixer::class
+            PhpdocTypesOrderFixer::class,
         ]
     );
     $parameters->set(
