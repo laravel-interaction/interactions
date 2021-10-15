@@ -14,7 +14,7 @@ use LaravelInteraction\Bookmark\Tests\TestCase;
 final class BookmarkableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Bookmark\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Bookmark\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Bookmark\Tests\Models\Channel|\LaravelInteraction\Bookmark\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {

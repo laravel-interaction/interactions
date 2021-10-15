@@ -14,7 +14,7 @@ use LaravelInteraction\Vote\Tests\TestCase;
 final class VoteableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Vote\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Vote\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Vote\Tests\Models\Channel|\LaravelInteraction\Vote\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {

@@ -14,7 +14,7 @@ use LaravelInteraction\Block\Tests\TestCase;
 final class BlockableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Block\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Block\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Block\Tests\Models\Channel|\LaravelInteraction\Block\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {

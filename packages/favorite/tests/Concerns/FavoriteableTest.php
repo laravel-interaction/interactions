@@ -14,7 +14,7 @@ use LaravelInteraction\Favorite\Tests\TestCase;
 final class FavoriteableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Favorite\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Favorite\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Favorite\Tests\Models\Channel|\LaravelInteraction\Favorite\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {

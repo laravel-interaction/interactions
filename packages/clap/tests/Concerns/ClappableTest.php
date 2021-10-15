@@ -14,7 +14,7 @@ use LaravelInteraction\Clap\Tests\TestCase;
 final class ClappableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Clap\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Clap\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Clap\Tests\Models\Channel|\LaravelInteraction\Clap\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {

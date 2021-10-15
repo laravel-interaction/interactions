@@ -14,7 +14,7 @@ use LaravelInteraction\Like\Tests\TestCase;
 final class LikeableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Like\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Like\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Like\Tests\Models\Channel|\LaravelInteraction\Like\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {

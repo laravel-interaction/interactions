@@ -14,7 +14,7 @@ use LaravelInteraction\Follow\Tests\TestCase;
 final class FollowableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Follow\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Follow\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Follow\Tests\Models\Channel|\LaravelInteraction\Follow\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {

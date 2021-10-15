@@ -14,7 +14,7 @@ use LaravelInteraction\Rate\Tests\TestCase;
 final class RatableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Rate\Tests\Models\Channel>>|array|<|class-string|<|\LaravelInteraction\Rate\Tests\Models\User>>>
+     * @return \Iterator<array<class-string<\LaravelInteraction\Rate\Tests\Models\Channel|\LaravelInteraction\Rate\Tests\Models\User>>>
      */
     public function provideModelClasses(): \Iterator
     {
