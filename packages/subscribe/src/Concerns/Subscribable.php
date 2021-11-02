@@ -91,11 +91,16 @@ trait Subscribable
 
         return (int) $this->subscribers_count;
     }
-
+    /**
+     * @param int $precision
+     * @param int $mode
+     * @param array<int, string>|null $divisors
+     * @return string
+     */
     public function subscribersCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
-        $divisors = null
+        array   $divisors = null
     ): string {
         return Interaction::numberForHumans(
             $this->subscribersCount(),

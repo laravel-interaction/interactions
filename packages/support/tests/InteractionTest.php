@@ -43,7 +43,7 @@ final class InteractionTest extends TestCase
     /**
      * @dataProvider data
      *
-     * @param mixed $actual
+     * @param int|float $actual
      */
     public function testNumberForHuman(
         $actual,

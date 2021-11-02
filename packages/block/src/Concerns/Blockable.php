@@ -90,7 +90,13 @@ trait Blockable
         return (int) $this->blockers_count;
     }
 
-    public function blockersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    /**
+     * @param int $precision
+     * @param int $mode
+     * @param array<int, string>|null $divisors
+     * @return string
+     */
+    public function blockersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, array $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->blockersCount(),

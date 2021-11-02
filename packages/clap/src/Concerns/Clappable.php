@@ -97,8 +97,13 @@ trait Clappable
 
         return (int) $this->clappers_count;
     }
-
-    public function clappersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    /**
+     * @param int $precision
+     * @param int $mode
+     * @param array<int, string>|null $divisors
+     * @return string
+     */
+    public function clappersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->clappersCount(),
@@ -128,6 +133,11 @@ trait Clappable
         );
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param callable|null $constraints
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeWithClappersCount(Builder $query, $constraints = null): Builder
     {
         return $query->withCount(
@@ -139,6 +149,11 @@ trait Clappable
         );
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param callable|null $constraints
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     protected function selectDistinctClappersCount(Builder $query, $constraints = null): Builder
     {
         if ($constraints !== null) {
@@ -165,7 +180,7 @@ trait Clappable
     public function clappableApplauseCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
-        $divisors = null
+        array   $divisors = null
     ): string {
         return Interaction::numberForHumans(
             $this->clappableApplauseCount(),

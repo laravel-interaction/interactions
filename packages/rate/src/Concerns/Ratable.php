@@ -98,7 +98,7 @@ trait Ratable
         return (int) $this->raters_count;
     }
 
-    public function ratersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    public function ratersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->ratersCount(),
@@ -128,6 +128,11 @@ trait Ratable
         );
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param callable|null $constraints
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeWithRatersCount(Builder $query, $constraints = null): Builder
     {
         return $query->withCount(
@@ -139,6 +144,11 @@ trait Ratable
         );
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param callable|null $constraints
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     protected function selectDistinctRatersCount(Builder $query, $constraints = null): Builder
     {
         if ($constraints !== null) {
@@ -165,7 +175,7 @@ trait Ratable
     public function ratableRatingsCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
-        $divisors = null
+        array   $divisors = null
     ): string {
         return Interaction::numberForHumans(
             $this->ratableRatingsCount(),
@@ -194,7 +204,7 @@ trait Ratable
         if (method_exists($this, 'loadAvg')) {
             $this->loadAvg('ratableRatings', 'rating');
         } else {
-            $this->ratable_ratings_avg_rating = $this->ratableRatings()
+            $this->ratable_ratings_avg_rating = (float)$this->ratableRatings()
                 ->avg('rating');
         }
 
@@ -220,14 +230,19 @@ trait Ratable
         if (method_exists($this, 'loadSum')) {
             $this->loadSum('ratableRatings', 'rating');
         } else {
-            $this->ratable_ratings_sum_rating = $this->ratableRatings()
+            $this->ratable_ratings_sum_rating = (float)$this->ratableRatings()
                 ->sum('rating');
         }
 
         return $this;
     }
-
-    public function sumRatingForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    /**
+     * @param int $precision
+     * @param int $mode
+     * @param array<int, string>|null $divisors
+     * @return string
+     */
+    public function sumRatingForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->sumRating(),
@@ -237,7 +252,7 @@ trait Ratable
         );
     }
 
-    public function ratingPercent($max = 5): float
+    public function ratingPercent(float $max = 5): float
     {
         $quantity = $this->ratableRatingsCount();
         $total = $this->sumRating();
