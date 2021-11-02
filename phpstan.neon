@@ -5,7 +5,6 @@ parameters:
     level: max
     paths:
         - packages
-    checkMissingIterableValueType: false
     ignoreErrors:
         - '#Method LaravelInteraction\\(.*?)\\Tests\\Models\\(.*?)::(.*?)\(\) has parameter \$(.*?) with no typehint specified.#'
         - '#Class App\\User not found.#'
