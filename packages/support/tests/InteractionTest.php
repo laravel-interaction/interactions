@@ -24,6 +24,9 @@ final class InteractionTest extends TestCase
         1000 ** 6 => 'Qi',
     ];
 
+    /**
+     * @return \Iterator<array{float|int, string, string, string, string}>
+     */
     public function data(): \Iterator
     {
         yield [0, '0', '0', '0', '0a'];
