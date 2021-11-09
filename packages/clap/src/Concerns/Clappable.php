@@ -97,6 +97,7 @@ trait Clappable
 
         return (int) $this->clappers_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -129,6 +130,7 @@ trait Clappable
             }
         );
     }
+
     /**
      * @param callable $constraints
      */
@@ -168,6 +170,7 @@ trait Clappable
 
         return (int) $this->clappable_applause_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */

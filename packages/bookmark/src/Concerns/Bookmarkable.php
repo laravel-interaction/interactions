@@ -47,6 +47,7 @@ trait Bookmarkable
 
         return (int) $this->bookmarkers_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */

@@ -91,6 +91,7 @@ trait Followable
 
         return (int) $this->followers_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */

@@ -91,6 +91,7 @@ trait Subscribable
 
         return (int) $this->subscribers_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */

@@ -48,6 +48,7 @@ trait Voteable
 
         return (int) $this->downvoters_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -211,6 +212,7 @@ trait Voteable
 
         return (int) $this->upvoters_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -251,6 +253,7 @@ trait Voteable
 
         return (int) $this->voters_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -297,6 +300,7 @@ trait Voteable
 
         return $this;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -340,6 +344,7 @@ trait Voteable
 
         return $this;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -383,6 +388,7 @@ trait Voteable
 
         return $this;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */

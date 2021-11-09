@@ -91,6 +91,7 @@ trait Favoriteable
 
         return (int) $this->favoriters_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */

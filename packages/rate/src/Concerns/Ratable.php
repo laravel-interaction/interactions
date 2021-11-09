@@ -97,6 +97,7 @@ trait Ratable
 
         return (int) $this->raters_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -129,6 +130,7 @@ trait Ratable
             }
         );
     }
+
     /**
      * @param callable $constraints
      */
@@ -142,6 +144,7 @@ trait Ratable
             ]
         );
     }
+
     /**
      * @param callable $constraints
      */
@@ -167,6 +170,7 @@ trait Ratable
 
         return (int) $this->ratable_ratings_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -234,6 +238,7 @@ trait Ratable
 
         return $this;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
@@ -249,7 +254,6 @@ trait Ratable
 
     /**
      * @param int|float $max
-     * @return float
      */
     public function ratingPercent($max = 5): float
     {

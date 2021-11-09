@@ -42,6 +42,7 @@ trait Likeable
 
         return (int) $this->fans_count;
     }
+
     /**
      * @param array<int, string>|null $divisors
      */
