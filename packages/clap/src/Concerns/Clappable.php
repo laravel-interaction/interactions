@@ -98,12 +98,9 @@ trait Clappable
         return (int) $this->clappers_count;
     }
     /**
-     * @param int $precision
-     * @param int $mode
      * @param array<int, string>|null $divisors
-     * @return string
      */
-    public function clappersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
+    public function clappersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->clappersCount(),
@@ -117,7 +114,7 @@ trait Clappable
     {
         return $query->whereHas(
             'clappers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -127,16 +124,13 @@ trait Clappable
     {
         return $query->whereDoesntHave(
             'clappers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
     }
-
     /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param callable|null $constraints
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param callable $constraints
      */
     public function scopeWithClappersCount(Builder $query, $constraints = null): Builder
     {
@@ -150,9 +144,7 @@ trait Clappable
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param callable|null $constraints
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param callable $constraints
      */
     protected function selectDistinctClappersCount(Builder $query, $constraints = null): Builder
     {
@@ -176,11 +168,13 @@ trait Clappable
 
         return (int) $this->clappable_applause_count;
     }
-
+    /**
+     * @param array<int, string>|null $divisors
+     */
     public function clappableApplauseCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
-        array   $divisors = null
+        $divisors = null
     ): string {
         return Interaction::numberForHumans(
             $this->clappableApplauseCount(),

@@ -48,15 +48,12 @@ trait Bookmarkable
         return (int) $this->bookmarkers_count;
     }
     /**
-     * @param int $precision
-     * @param int $mode
      * @param array<int, string>|null $divisors
-     * @return string
      */
     public function bookmarkersCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
-        array $divisors = null
+        $divisors = null
     ): string {
         return Interaction::numberForHumans(
             $this->bookmarkersCount(),
@@ -94,7 +91,7 @@ trait Bookmarkable
     {
         return $query->whereHas(
             'bookmarkers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -104,7 +101,7 @@ trait Bookmarkable
     {
         return $query->whereDoesntHave(
             'bookmarkers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );

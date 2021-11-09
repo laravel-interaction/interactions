@@ -48,11 +48,13 @@ trait Voteable
 
         return (int) $this->downvoters_count;
     }
-
+    /**
+     * @param array<int, string>|null $divisors
+     */
     public function downvotersCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
-        array   $divisors = null
+        $divisors = null
     ): string {
         return Interaction::numberForHumans(
             $this->downvotersCount(),
@@ -137,7 +139,7 @@ trait Voteable
     {
         return $query->whereHas(
             'downvoters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -147,7 +149,7 @@ trait Voteable
     {
         return $query->whereDoesntHave(
             'downvoters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -157,7 +159,7 @@ trait Voteable
     {
         return $query->whereDoesntHave(
             'upvoters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -167,7 +169,7 @@ trait Voteable
     {
         return $query->whereDoesntHave(
             'voters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -177,7 +179,7 @@ trait Voteable
     {
         return $query->whereHas(
             'upvoters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -187,7 +189,7 @@ trait Voteable
     {
         return $query->whereHas(
             'voters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -209,8 +211,10 @@ trait Voteable
 
         return (int) $this->upvoters_count;
     }
-
-    public function upvotersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function upvotersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->upvotersCount(),
@@ -247,14 +251,10 @@ trait Voteable
 
         return (int) $this->voters_count;
     }
-
     /**
-     * @param int $precision
-     * @param int $mode
      * @param array<int, string>|null $divisors
-     * @return string
      */
-    public function votersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
+    public function votersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->votersCount(),
@@ -264,6 +264,9 @@ trait Voteable
         );
     }
 
+    /**
+     * @param mixed $user
+     */
     protected function isVoter($user): bool
     {
         return is_a($user, config('vote.models.user'));
@@ -288,14 +291,16 @@ trait Voteable
         if (method_exists($this, 'loadSum')) {
             $this->loadSum('voteableVotes', 'votes');
         } else {
-            $this->voteable_votes_sum_votes =(int) $this->voteableVotes()
+            $this->voteable_votes_sum_votes = $this->voteableVotes()
                 ->sum('votes');
         }
 
         return $this;
     }
-
-    public function sumVotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function sumVotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->sumVotes(),
@@ -328,15 +333,17 @@ trait Voteable
                 },
             ], 'votes');
         } else {
-            $this->voteable_votes_sum_upvotes =(int) $this->voteableVotes()
+            $this->voteable_votes_sum_upvotes = $this->voteableVotes()
                 ->where('votes', '>', 0)
                 ->sum('votes');
         }
 
         return $this;
     }
-
-    public function sumUpvotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function sumUpvotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->sumUpvotes(),
@@ -369,15 +376,17 @@ trait Voteable
                 },
             ], 'votes');
         } else {
-            $this->voteable_votes_sum_downvotes =(int) $this->voteableVotes()
+            $this->voteable_votes_sum_downvotes = $this->voteableVotes()
                 ->where('votes', '<', 0)
                 ->sum('votes');
         }
 
         return $this;
     }
-
-    public function sumDownvotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, array $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function sumDownvotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->sumDownvotes(),

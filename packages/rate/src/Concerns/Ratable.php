@@ -97,8 +97,10 @@ trait Ratable
 
         return (int) $this->raters_count;
     }
-
-    public function ratersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function ratersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->ratersCount(),
@@ -112,7 +114,7 @@ trait Ratable
     {
         return $query->whereHas(
             'raters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -122,16 +124,13 @@ trait Ratable
     {
         return $query->whereDoesntHave(
             'raters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
     }
-
     /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param callable|null $constraints
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param callable $constraints
      */
     public function scopeWithRatersCount(Builder $query, $constraints = null): Builder
     {
@@ -143,11 +142,8 @@ trait Ratable
             ]
         );
     }
-
     /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param callable|null $constraints
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param callable $constraints
      */
     protected function selectDistinctRatersCount(Builder $query, $constraints = null): Builder
     {
@@ -171,11 +167,13 @@ trait Ratable
 
         return (int) $this->ratable_ratings_count;
     }
-
+    /**
+     * @param array<int, string>|null $divisors
+     */
     public function ratableRatingsCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
-        array   $divisors = null
+        $divisors = null
     ): string {
         return Interaction::numberForHumans(
             $this->ratableRatingsCount(),
@@ -204,7 +202,7 @@ trait Ratable
         if (method_exists($this, 'loadAvg')) {
             $this->loadAvg('ratableRatings', 'rating');
         } else {
-            $this->ratable_ratings_avg_rating = (float)$this->ratableRatings()
+            $this->ratable_ratings_avg_rating = $this->ratableRatings()
                 ->avg('rating');
         }
 
@@ -230,19 +228,16 @@ trait Ratable
         if (method_exists($this, 'loadSum')) {
             $this->loadSum('ratableRatings', 'rating');
         } else {
-            $this->ratable_ratings_sum_rating = (float)$this->ratableRatings()
+            $this->ratable_ratings_sum_rating = $this->ratableRatings()
                 ->sum('rating');
         }
 
         return $this;
     }
     /**
-     * @param int $precision
-     * @param int $mode
      * @param array<int, string>|null $divisors
-     * @return string
      */
-    public function sumRatingForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP,array  $divisors = null): string
+    public function sumRatingForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->sumRating(),
@@ -252,7 +247,11 @@ trait Ratable
         );
     }
 
-    public function ratingPercent(float $max = 5): float
+    /**
+     * @param int|float $max
+     * @return float
+     */
+    public function ratingPercent($max = 5): float
     {
         $quantity = $this->ratableRatingsCount();
         $total = $this->sumRating();
