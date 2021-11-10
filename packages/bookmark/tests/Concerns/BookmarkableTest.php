@@ -4,21 +4,29 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Bookmark\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Bookmark\Tests\Models\Channel;
 use LaravelInteraction\Bookmark\Tests\Models\User;
 use LaravelInteraction\Bookmark\Tests\TestCase;
 
-class BookmarkableTest extends TestCase
+/**
+ * @internal
+ */
+final class BookmarkableTest extends TestCase
 {
-    public function modelClasses(): array
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Bookmark\Tests\Models\Channel|\LaravelInteraction\Bookmark\Tests\Models\User>>>
+     */
+    public function provideModelClasses(): Iterator
     {
-        return[[Channel::class], [User::class]];
+        yield [Channel::class];
+        yield [User::class];
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testBookmarkableBookmarks($modelClass): void
     {
@@ -30,9 +38,9 @@ class BookmarkableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testBookmarkersCount($modelClass): void
     {
@@ -47,9 +55,9 @@ class BookmarkableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testBookmarkersCountForHumans($modelClass): void
     {
@@ -60,9 +68,9 @@ class BookmarkableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testIsBookmarkedBy($modelClass): void
     {
@@ -79,9 +87,9 @@ class BookmarkableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testIsNotBookmarkedBy($modelClass): void
     {
@@ -98,9 +106,9 @@ class BookmarkableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testBookmarkers($modelClass): void
     {
@@ -113,9 +121,9 @@ class BookmarkableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereBookmarkedBy($modelClass): void
     {
@@ -128,9 +136,9 @@ class BookmarkableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereNotBookmarkedBy($modelClass): void
     {

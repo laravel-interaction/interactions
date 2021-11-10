@@ -13,7 +13,6 @@ use LaravelInteraction\Rate\Concerns\Rater;
  */
 class User extends Model
 {
-    use Rater;
-
     use Ratable;
+    use Rater;
 }

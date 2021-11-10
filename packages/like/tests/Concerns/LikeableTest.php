@@ -4,21 +4,29 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Like\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Like\Tests\Models\Channel;
 use LaravelInteraction\Like\Tests\Models\User;
 use LaravelInteraction\Like\Tests\TestCase;
 
-class LikeableTest extends TestCase
+/**
+ * @internal
+ */
+final class LikeableTest extends TestCase
 {
-    public function modelClasses(): array
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Like\Tests\Models\Channel|\LaravelInteraction\Like\Tests\Models\User>>>
+     */
+    public function provideModelClasses(): Iterator
     {
-        return[[Channel::class], [User::class]];
+        yield [Channel::class];
+        yield [User::class];
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testLikes($modelClass): void
     {
@@ -30,9 +38,9 @@ class LikeableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testFansCount($modelClass): void
     {
@@ -47,9 +55,9 @@ class LikeableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testFansCountForHumans($modelClass): void
     {
@@ -60,9 +68,9 @@ class LikeableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testIsLikedBy($modelClass): void
     {
@@ -79,9 +87,9 @@ class LikeableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testIsNotLikedBy($modelClass): void
     {
@@ -98,9 +106,9 @@ class LikeableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testFans($modelClass): void
     {
@@ -113,9 +121,9 @@ class LikeableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereLikedBy($modelClass): void
     {
@@ -128,9 +136,9 @@ class LikeableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereNotLikedBy($modelClass): void
     {

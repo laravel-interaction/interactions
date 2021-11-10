@@ -4,21 +4,29 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Block\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Block\Tests\Models\Channel;
 use LaravelInteraction\Block\Tests\Models\User;
 use LaravelInteraction\Block\Tests\TestCase;
 
-class BlockableTest extends TestCase
+/**
+ * @internal
+ */
+final class BlockableTest extends TestCase
 {
-    public function modelClasses(): array
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Block\Tests\Models\Channel|\LaravelInteraction\Block\Tests\Models\User>>>
+     */
+    public function provideModelClasses(): Iterator
     {
-        return[[Channel::class], [User::class]];
+        yield [Channel::class];
+        yield [User::class];
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testBlocks($modelClass): void
     {
@@ -30,9 +38,9 @@ class BlockableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testBlockersCount($modelClass): void
     {
@@ -47,9 +55,9 @@ class BlockableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testBlockersCountForHumans($modelClass): void
     {
@@ -60,9 +68,9 @@ class BlockableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testIsBlockedBy($modelClass): void
     {
@@ -79,9 +87,9 @@ class BlockableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testIsNotBlockedBy($modelClass): void
     {
@@ -98,9 +106,9 @@ class BlockableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testBlockers($modelClass): void
     {
@@ -113,9 +121,9 @@ class BlockableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereBlockedBy($modelClass): void
     {
@@ -128,9 +136,9 @@ class BlockableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereNotBlockedBy($modelClass): void
     {

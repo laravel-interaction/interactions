@@ -4,21 +4,29 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Favorite\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Favorite\Tests\Models\Channel;
 use LaravelInteraction\Favorite\Tests\Models\User;
 use LaravelInteraction\Favorite\Tests\TestCase;
 
-class FavoriteableTest extends TestCase
+/**
+ * @internal
+ */
+final class FavoriteableTest extends TestCase
 {
-    public function modelClasses(): array
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Favorite\Tests\Models\Channel|\LaravelInteraction\Favorite\Tests\Models\User>>>
+     */
+    public function provideModelClasses(): Iterator
     {
-        return[[Channel::class], [User::class]];
+        yield [Channel::class];
+        yield [User::class];
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testFavorites($modelClass): void
     {
@@ -30,9 +38,9 @@ class FavoriteableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testFavoritersCount($modelClass): void
     {
@@ -47,9 +55,9 @@ class FavoriteableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testFavoritersCountForHumans($modelClass): void
     {
@@ -60,9 +68,9 @@ class FavoriteableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testIsFavoritedBy($modelClass): void
     {
@@ -79,9 +87,9 @@ class FavoriteableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testIsNotFavoritedBy($modelClass): void
     {
@@ -98,9 +106,9 @@ class FavoriteableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testFavoriters($modelClass): void
     {
@@ -113,9 +121,9 @@ class FavoriteableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereFavoritedBy($modelClass): void
     {
@@ -128,9 +136,9 @@ class FavoriteableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereNotFavoritedBy($modelClass): void
     {

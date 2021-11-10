@@ -98,7 +98,10 @@ trait Clappable
         return (int) $this->clappers_count;
     }
 
-    public function clappersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function clappersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->clappersCount(),
@@ -112,7 +115,7 @@ trait Clappable
     {
         return $query->whereHas(
             'clappers',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -122,12 +125,15 @@ trait Clappable
     {
         return $query->whereDoesntHave(
             'clappers',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
     }
 
+    /**
+     * @param callable $constraints
+     */
     public function scopeWithClappersCount(Builder $query, $constraints = null): Builder
     {
         return $query->withCount(
@@ -139,6 +145,9 @@ trait Clappable
         );
     }
 
+    /**
+     * @param callable $constraints
+     */
     protected function selectDistinctClappersCount(Builder $query, $constraints = null): Builder
     {
         if ($constraints !== null) {
@@ -162,8 +171,14 @@ trait Clappable
         return (int) $this->clappable_applause_count;
     }
 
-    public function clappableApplauseCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
-    {
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function clappableApplauseCountForHumans(
+        int $precision = 1,
+        int $mode = PHP_ROUND_HALF_UP,
+        $divisors = null
+    ): string {
         return Interaction::numberForHumans(
             $this->clappableApplauseCount(),
             $precision,

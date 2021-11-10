@@ -13,7 +13,6 @@ use LaravelInteraction\Subscribe\Concerns\Subscriber;
  */
 class User extends Model
 {
-    use Subscriber;
-
     use Subscribable;
+    use Subscriber;
 }

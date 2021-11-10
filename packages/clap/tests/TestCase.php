@@ -10,7 +10,7 @@ use LaravelInteraction\Clap\ClapServiceProvider;
 use LaravelInteraction\Clap\Tests\Models\User;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
-class TestCase extends BaseTestCase
+abstract class TestCase extends BaseTestCase
 {
     protected function setUp(): void
     {
@@ -42,6 +42,11 @@ class TestCase extends BaseTestCase
         ]);
     }
 
+    /**
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array<class-string<\Illuminate\Support\ServiceProvider>>
+     */
     protected function getPackageProviders($app): array
     {
         return [ClapServiceProvider::class];

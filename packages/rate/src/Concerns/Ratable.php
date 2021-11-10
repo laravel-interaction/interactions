@@ -98,7 +98,10 @@ trait Ratable
         return (int) $this->raters_count;
     }
 
-    public function ratersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function ratersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->ratersCount(),
@@ -112,7 +115,7 @@ trait Ratable
     {
         return $query->whereHas(
             'raters',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -122,12 +125,15 @@ trait Ratable
     {
         return $query->whereDoesntHave(
             'raters',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
     }
 
+    /**
+     * @param callable $constraints
+     */
     public function scopeWithRatersCount(Builder $query, $constraints = null): Builder
     {
         return $query->withCount(
@@ -139,6 +145,9 @@ trait Ratable
         );
     }
 
+    /**
+     * @param callable $constraints
+     */
     protected function selectDistinctRatersCount(Builder $query, $constraints = null): Builder
     {
         if ($constraints !== null) {
@@ -162,8 +171,14 @@ trait Ratable
         return (int) $this->ratable_ratings_count;
     }
 
-    public function ratableRatingsCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
-    {
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function ratableRatingsCountForHumans(
+        int $precision = 1,
+        int $mode = PHP_ROUND_HALF_UP,
+        $divisors = null
+    ): string {
         return Interaction::numberForHumans(
             $this->ratableRatingsCount(),
             $precision,
@@ -224,7 +239,10 @@ trait Ratable
         return $this;
     }
 
-    public function sumRatingForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    /**
+     * @param array<int, string>|null $divisors
+     */
+    public function sumRatingForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->sumRating(),
@@ -234,6 +252,9 @@ trait Ratable
         );
     }
 
+    /**
+     * @param int|float $max
+     */
     public function ratingPercent($max = 5): float
     {
         $quantity = $this->ratableRatingsCount();

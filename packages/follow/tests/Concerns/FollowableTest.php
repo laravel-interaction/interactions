@@ -4,21 +4,29 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Follow\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Follow\Tests\Models\Channel;
 use LaravelInteraction\Follow\Tests\Models\User;
 use LaravelInteraction\Follow\Tests\TestCase;
 
-class FollowableTest extends TestCase
+/**
+ * @internal
+ */
+final class FollowableTest extends TestCase
 {
-    public function modelClasses(): array
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Follow\Tests\Models\Channel|\LaravelInteraction\Follow\Tests\Models\User>>>
+     */
+    public function provideModelClasses(): Iterator
     {
-        return[[Channel::class], [User::class]];
+        yield [Channel::class];
+        yield [User::class];
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testFollowings($modelClass): void
     {
@@ -30,9 +38,9 @@ class FollowableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testFollowersCount($modelClass): void
     {
@@ -47,9 +55,9 @@ class FollowableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testFollowersCountForHumans($modelClass): void
     {
@@ -60,9 +68,9 @@ class FollowableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testIsFollowedBy($modelClass): void
     {
@@ -79,9 +87,9 @@ class FollowableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testIsNotFollowedBy($modelClass): void
     {
@@ -98,9 +106,9 @@ class FollowableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testFollowers($modelClass): void
     {
@@ -113,9 +121,9 @@ class FollowableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereFollowedBy($modelClass): void
     {
@@ -128,9 +136,9 @@ class FollowableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereNotFollowedBy($modelClass): void
     {

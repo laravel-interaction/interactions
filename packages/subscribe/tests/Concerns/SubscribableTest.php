@@ -4,21 +4,29 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Subscribe\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Subscribe\Tests\Models\Channel;
 use LaravelInteraction\Subscribe\Tests\Models\User;
 use LaravelInteraction\Subscribe\Tests\TestCase;
 
-class SubscribableTest extends TestCase
+/**
+ * @internal
+ */
+final class SubscribableTest extends TestCase
 {
-    public function modelClasses(): array
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Subscribe\Tests\Models\Channel|\LaravelInteraction\Subscribe\Tests\Models\User>>>
+     */
+    public function provideModelClasses(): Iterator
     {
-        return[[Channel::class], [User::class]];
+        yield [Channel::class];
+        yield [User::class];
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testSubscriptions($modelClass): void
     {
@@ -30,9 +38,9 @@ class SubscribableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testSubscribersCount($modelClass): void
     {
@@ -47,9 +55,9 @@ class SubscribableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testSubscribersCountForHumans($modelClass): void
     {
@@ -60,9 +68,9 @@ class SubscribableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testIsSubscribedBy($modelClass): void
     {
@@ -79,9 +87,9 @@ class SubscribableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testIsNotSubscribedBy($modelClass): void
     {
@@ -98,9 +106,9 @@ class SubscribableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testSubscribers($modelClass): void
     {
@@ -113,9 +121,9 @@ class SubscribableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereSubscribedBy($modelClass): void
     {
@@ -128,9 +136,9 @@ class SubscribableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Subscribe\Tests\Models\User|\LaravelInteraction\Subscribe\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereNotSubscribedBy($modelClass): void
     {
