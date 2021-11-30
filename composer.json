@@ -37,6 +37,7 @@
         "laravel-interaction/rate": "self.version",
         "laravel-interaction/subscribe": "self.version",
         "laravel-interaction/support": "self.version",
+        "laravel-interaction/visit": "self.version",
         "laravel-interaction/vote": "self.version"
     },
     "autoload": {
@@ -50,6 +51,7 @@
             "LaravelInteraction\\Rate\\": "packages/rate/src",
             "LaravelInteraction\\Subscribe\\": "packages/subscribe/src",
             "LaravelInteraction\\Support\\": "packages/support/src",
+            "LaravelInteraction\\Visit\\": "packages/visit/src",
             "LaravelInteraction\\Vote\\": "packages/vote/src"
         }
     },
@@ -64,6 +66,7 @@
             "LaravelInteraction\\Rate\\Tests\\": "packages/rate/tests",
             "LaravelInteraction\\Subscribe\\Tests\\": "packages/subscribe/tests",
             "LaravelInteraction\\Support\\Tests\\": "packages/support/tests",
+            "LaravelInteraction\\Visit\\Tests\\": "packages/visit/tests",
             "LaravelInteraction\\Vote\\Tests\\": "packages/vote/tests"
         }
     },
@@ -96,6 +99,7 @@
                 "LaravelInteraction\\Block\\BlockServiceProvider",
                 "LaravelInteraction\\Clap\\ClapServiceProvider",
                 "LaravelInteraction\\Subscribe\\SubscribeServiceProvider",
+                "LaravelInteraction\\Visit\\VisitServiceProvider",
                 "LaravelInteraction\\Favorite\\FavoriteServiceProvider",
                 "LaravelInteraction\\Follow\\FollowServiceProvider",
                 "LaravelInteraction\\Bookmark\\BookmarkServiceProvider",

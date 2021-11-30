@@ -24,6 +24,7 @@
 
 - [Clap](https://github.com/laravel-interaction/clap): 👏 User clap/UndoApplause behavior for Laravel.
 - [Rate](https://github.com/laravel-interaction/rate): 😄 User rate/unrate behaviour for Laravel.
+- [Visit](https://github.com/laravel-interaction/visit): 🔍 User visit behaviour for Laravel.
 
 ## Reversible interaction
 
