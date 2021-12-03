@@ -53,9 +53,8 @@ trait Follower
     public function followerFollowings(): HasMany
     {
         return $this->hasMany(
-            config('follow.models.following'),
-            config('follow.column_names.user_foreign_key'),
-            $this->getKeyName()
+            config('follow.models.pivot'),
+            config('follow.column_names.user_foreign_key')
         );
     }
 
@@ -88,7 +87,7 @@ trait Follower
         return $this->morphedByMany(
             $class,
             'followable',
-            config('follow.models.following'),
+            config('follow.models.pivot'),
             config('follow.column_names.user_foreign_key')
         )
             ->withTimestamps();

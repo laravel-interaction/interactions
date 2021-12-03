@@ -94,9 +94,8 @@ trait Rater
     public function raterRatings(): HasMany
     {
         return $this->hasMany(
-            config('rate.models.rating'),
-            config('rate.column_names.user_foreign_key'),
-            $this->getKeyName()
+            config('rate.models.pivot'),
+            config('rate.column_names.user_foreign_key')
         );
     }
 
@@ -105,7 +104,7 @@ trait Rater
         return $this->morphedByMany(
             $class,
             'ratable',
-            config('rate.models.rating'),
+            config('rate.models.pivot'),
             config('rate.column_names.user_foreign_key')
         )
             ->withPivot('rating')

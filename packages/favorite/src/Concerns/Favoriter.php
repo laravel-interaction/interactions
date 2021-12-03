@@ -53,9 +53,8 @@ trait Favoriter
     public function favoriterFavorites(): HasMany
     {
         return $this->hasMany(
-            config('favorite.models.favorite'),
-            config('favorite.column_names.user_foreign_key'),
-            $this->getKeyName()
+            config('favorite.models.pivot'),
+            config('favorite.column_names.user_foreign_key')
         );
     }
 
@@ -88,7 +87,7 @@ trait Favoriter
         return $this->morphedByMany(
             $class,
             'favoriteable',
-            config('favorite.models.favorite'),
+            config('favorite.models.pivot'),
             config('favorite.column_names.user_foreign_key')
         )
             ->withTimestamps();

@@ -14,13 +14,13 @@ class CreateBlocksTable extends Migration
     public function up(): void
     {
         Schema::create(
-            config('block.table_names.blocks'),
+            config('block.table_names.pivot'),
             function (Blueprint $table): void {
                 config('block.uuids') ? $table->uuid('uuid') : $table->bigIncrements('id');
                 $table->unsignedBigInteger(config('block.column_names.user_foreign_key'))->index()->comment('user_id');
                 $table->morphs('blockable');
                 $table->timestamps();
-                $table->unique([config('block.column_names.user_foreign_key'), 'blockable_type', 'blockable_id']);
+                $table->unique([config('block.column_names.user_foreign_key'),"blockable_type","blockable_id"]);
             }
         );
     }
