@@ -22,6 +22,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             '*/migrations/*',
             YodaStyleFixer::class => null,
             PhpUnitTestClassRequiresCoversFixer::class,
+
+            // issue: https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5850
             PhpdocTypesOrderFixer::class,
         ]
     );
