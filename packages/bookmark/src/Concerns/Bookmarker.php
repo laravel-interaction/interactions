@@ -37,10 +37,7 @@ trait Bookmarker
 
     public function bookmarkerBookmarks(): HasMany
     {
-        return $this->hasMany(
-            config('bookmark.models.pivot'),
-            config('bookmark.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('bookmark.models.pivot'), config('bookmark.column_names.user_foreign_key'));
     }
 
     public function hasBookmarked(Model $object): bool

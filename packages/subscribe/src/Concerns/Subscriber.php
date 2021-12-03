@@ -52,10 +52,7 @@ trait Subscriber
 
     public function subscriberSubscriptions(): HasMany
     {
-        return $this->hasMany(
-            config('subscribe.models.pivot'),
-            config('subscribe.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('subscribe.models.pivot'), config('subscribe.column_names.user_foreign_key'));
     }
 
     /**

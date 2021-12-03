@@ -23,8 +23,8 @@ final class BlockerTest extends TestCase
             Block::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-               'blockable_type' => $channel->getMorphClass(),
-               'blockable_id' => $channel->getKey(),
+                'blockable_type' => $channel->getMorphClass(),
+                'blockable_id' => $channel->getKey(),
             ]
         );
         $user->load('blockerBlocks');
@@ -51,8 +51,8 @@ final class BlockerTest extends TestCase
             Block::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-               'blockable_type' => $channel->getMorphClass(),
-               'blockable_id' => $channel->getKey(),
+                'blockable_type' => $channel->getMorphClass(),
+                'blockable_id' => $channel->getKey(),
             ]
         );
     }
@@ -66,8 +66,8 @@ final class BlockerTest extends TestCase
             Block::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-              'blockable_type' => $channel->getMorphClass(),
-           'blockable_id'=> $channel->getKey(),
+                'blockable_type' => $channel->getMorphClass(),
+                'blockable_id' => $channel->getKey(),
             ]
         );
         $user->toggleBlock($channel);
@@ -75,8 +75,8 @@ final class BlockerTest extends TestCase
             Block::query()->getModel()->getTable(),
             [
                 'user_id' => $user->getKey(),
-              'blockable_type' => $channel->getMorphClass(),
-               'blockable_id' => $channel->getKey(),
+                'blockable_type' => $channel->getMorphClass(),
+                'blockable_id' => $channel->getKey(),
             ]
         );
     }

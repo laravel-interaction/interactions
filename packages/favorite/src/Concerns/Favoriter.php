@@ -52,10 +52,7 @@ trait Favoriter
 
     public function favoriterFavorites(): HasMany
     {
-        return $this->hasMany(
-            config('favorite.models.pivot'),
-            config('favorite.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('favorite.models.pivot'), config('favorite.column_names.user_foreign_key'));
     }
 
     /**

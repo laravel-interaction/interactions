@@ -109,10 +109,7 @@ trait Voter
 
     public function voterVotes(): HasMany
     {
-        return $this->hasMany(
-            config('vote.models.pivot'),
-            config('vote.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('vote.models.pivot'), config('vote.column_names.user_foreign_key'));
     }
 
     protected function downvotedItems(string $class): MorphToMany

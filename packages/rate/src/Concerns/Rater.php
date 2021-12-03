@@ -93,10 +93,7 @@ trait Rater
 
     public function raterRatings(): HasMany
     {
-        return $this->hasMany(
-            config('rate.models.pivot'),
-            config('rate.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('rate.models.pivot'), config('rate.column_names.user_foreign_key'));
     }
 
     protected function ratedItems(string $class): MorphToMany

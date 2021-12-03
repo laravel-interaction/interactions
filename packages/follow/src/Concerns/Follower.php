@@ -52,10 +52,7 @@ trait Follower
 
     public function followerFollowings(): HasMany
     {
-        return $this->hasMany(
-            config('follow.models.pivot'),
-            config('follow.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('follow.models.pivot'), config('follow.column_names.user_foreign_key'));
     }
 
     /**

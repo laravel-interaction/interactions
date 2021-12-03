@@ -17,10 +17,7 @@ trait Fan
 {
     public function fanLikes(): HasMany
     {
-        return $this->hasMany(
-            config('like.models.pivot'),
-            config('like.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('like.models.pivot'), config('like.column_names.user_foreign_key'));
     }
 
     public function hasLiked(Model $object): bool

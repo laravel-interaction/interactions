@@ -80,10 +80,7 @@ trait Clapper
 
     public function clapperApplause(): HasMany
     {
-        return $this->hasMany(
-            config('clap.models.pivot'),
-            config('clap.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('clap.models.pivot'), config('clap.column_names.user_foreign_key'));
     }
 
     protected function clappedItems(string $class): MorphToMany

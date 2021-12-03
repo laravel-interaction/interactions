@@ -35,10 +35,7 @@ trait Visitor
 
     public function visitVisitors(): HasMany
     {
-        return $this->hasMany(
-            config('visit.models.pivot'),
-            config('visit.column_names.user_foreign_key')
-        );
+        return $this->hasMany(config('visit.models.pivot'), config('visit.column_names.user_foreign_key'));
     }
 
     protected function visitedItems(string $class): MorphToMany
