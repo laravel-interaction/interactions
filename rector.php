@@ -22,11 +22,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services = $containerConfigurator->services();
     $services->set(ReturnArrayClassMethodToYieldRector::class)
-        ->call('configure', [[
-            ReturnArrayClassMethodToYieldRector::METHODS_TO_YIELDS => ValueObjectInliner::inline([
-                new ReturnArrayClassMethodToYield(TestCase::class, '*provide*'),
-            ]),
-        ],
+        ->configure([
+            new ReturnArrayClassMethodToYield(TestCase::class, '*provide*'),
         ]);
     $parameters = $containerConfigurator->parameters();
     $parameters->set(
