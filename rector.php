@@ -12,7 +12,6 @@ use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Privatization\Rector\Class_\FinalizeClassesWithoutChildrenRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\SymfonyPhpConfig\ValueObjectInliner;
 use Zing\CodingStandard\Set\RectorSetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -22,9 +21,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services = $containerConfigurator->services();
     $services->set(ReturnArrayClassMethodToYieldRector::class)
-        ->configure([
-            new ReturnArrayClassMethodToYield(TestCase::class, '*provide*'),
-        ]);
+        ->configure([new ReturnArrayClassMethodToYield(TestCase::class, '*provide*')]);
     $parameters = $containerConfigurator->parameters();
     $parameters->set(
         Option::SKIP,
