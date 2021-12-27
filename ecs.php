@@ -19,9 +19,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(
         Option::SKIP,
         [
-            '*/migrations/*',
             YodaStyleFixer::class => null,
             PhpUnitTestClassRequiresCoversFixer::class,
+            // Will be removed in a future major version.
+            \SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff::class,
 
             // issue: https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5850
             PhpdocTypesOrderFixer::class,
