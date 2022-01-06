@@ -24,6 +24,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->configure([new ReturnArrayClassMethodToYield(TestCase::class, '*provide*')]);
     $parameters = $containerConfigurator->parameters();
     $parameters->set(
+        Option::BOOTSTRAP_FILES,
+        [
+            __DIR__ . '/vendor/squizlabs/php_codesniffer/autoload.php',
+            __DIR__ . '/vendor/symplify/easy-coding-standard/vendor/autoload.php',
+        ]
+    );
+    $parameters->set(
         Option::SKIP,
         [
             RenameParamToMatchTypeRector::class,
