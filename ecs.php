@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use PhpCsFixer\Fixer\Phpdoc\PhpdocTypesOrderFixer;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCodingStandard\ValueObject\Option;
 use Zing\CodingStandard\Set\ECSSetList;
@@ -19,9 +18,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         [
             // Will be removed in a future major version.
             \SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff::class,
-
-            // issue: https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5850
-            PhpdocTypesOrderFixer::class,
         ]
     );
     $parameters->set(
