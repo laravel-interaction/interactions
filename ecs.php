@@ -7,9 +7,8 @@ use Symplify\EasyCodingStandard\ValueObject\Option;
 use Zing\CodingStandard\Set\ECSSetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import(ECSSetList::PHP_72);
     $containerConfigurator->import(ECSSetList::CUSTOM);
-    $containerConfigurator->import(ECSSetList::PHP71_MIGRATION);
-    $containerConfigurator->import(ECSSetList::PHP71_MIGRATION_RISKY);
 
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::PARALLEL, true);
@@ -19,6 +18,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             \PHP_CodeSniffer\Standards\PSR1\Sniffs\Classes\ClassDeclarationSniff::class => ['*/migrations/*'],
             // Will be removed in a future major version.
             \SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff::class,
+            \PHP_CodeSniffer\Standards\Squiz\Sniffs\PHP\CommentedOutCodeSniff::class,
         ]
     );
     $parameters->set(
