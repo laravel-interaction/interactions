@@ -20,10 +20,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 ],
             ],
             'require' => [
-                'php' => '^7.2 || ^8.0',
+                'php' => '^7.3 || ^8.0',
             ],
             'require-dev' => [
-                'symplify/monorepo-builder' => '^8.3 || ^9.2 || ^10.0',
+                'symplify/monorepo-builder' => '^10.0',
             ],
             'config' => [
                 'sort-packages' => true,
