@@ -394,6 +394,7 @@ final class VoteableTest extends TestCase
     {
         $user = User::query()->create();
         $other = User::query()->create();
+
         /** @var \LaravelInteraction\Vote\Tests\Models\User|\LaravelInteraction\Vote\Tests\Models\Channel $model */
         $model = $modelClass::query()->create();
         $user->vote($model);
@@ -418,6 +419,7 @@ final class VoteableTest extends TestCase
     public function testSumUpvotes($modelClass): void
     {
         $user = User::query()->create();
+
         /** @var \LaravelInteraction\Vote\Tests\Models\User|\LaravelInteraction\Vote\Tests\Models\Channel $model */
         $model = $modelClass::query()->create();
         $user->upvote($model);
@@ -440,6 +442,7 @@ final class VoteableTest extends TestCase
     public function testSumDownvotes($modelClass): void
     {
         $user = User::query()->create();
+
         /** @var \LaravelInteraction\Vote\Tests\Models\User|\LaravelInteraction\Vote\Tests\Models\Channel $model */
         $model = $modelClass::query()->create();
         $user->downvote($model);
