@@ -16,8 +16,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         Option::SKIP,
         [
             \PHP_CodeSniffer\Standards\PSR1\Sniffs\Classes\ClassDeclarationSniff::class => ['*/migrations/*'],
-            // Will be removed in a future major version.
-            \SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff::class,
             \PHP_CodeSniffer\Standards\Squiz\Sniffs\PHP\CommentedOutCodeSniff::class,
         ]
     );
