@@ -3,6 +3,11 @@
     "description": "Mono repository for all Laravel Interaction the Interactions",
     "keywords": ["laravel", "interaction"],
     "license": "MIT",
+    "homepage": "https://github.com/laravel-interaction/interactions",
+    "support": {
+        "issues": "https://github.com/laravel-interaction/interactions/issues",
+        "source": "https://github.com/laravel-interaction/interactions"
+    },
     "authors": [
         {
             "name": "zingimmick",
