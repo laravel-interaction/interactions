@@ -75,7 +75,7 @@ trait Follower
             $this->unsetRelation('followerFollowings');
         }
 
-        return (bool) $this->followedItems(get_class($object))
+        return (bool) $this->followedItems(\get_class($object))
             ->detach($object->getKey());
     }
 

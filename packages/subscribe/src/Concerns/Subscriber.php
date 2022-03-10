@@ -75,7 +75,7 @@ trait Subscriber
             $this->unsetRelation('subscriberSubscriptions');
         }
 
-        return (bool) $this->subscribedItems(get_class($object))
+        return (bool) $this->subscribedItems(\get_class($object))
             ->detach($object->getKey());
     }
 

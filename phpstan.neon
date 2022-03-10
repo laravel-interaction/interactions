@@ -1,13 +1,15 @@
 includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - vendor/nunomaduro/larastan/extension.neon
 
 parameters:
     level: 8
     paths:
         - packages
+    checkGenericClassInNonGenericObjectType: false
     ignoreErrors:
         - '#Class App\\User not found.#'
         - '#Method LaravelInteraction\\Rate\\Tests\\Models\\User::rate\(\) should return LaravelInteraction\\Rate\\Rating but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Rate\\Tests\\Models\\User::rateOnce\(\) should return LaravelInteraction\\Rate\\Rating but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Clap\\Tests\\Models\\User::clap\(\) should return LaravelInteraction\\Clap\\Applause but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Vote\\Tests\\Models\\User::vote\(\) should return LaravelInteraction\\Vote\\Vote but returns Illuminate\\Database\\Eloquent\\Model.#'
+        - '#Parameter \#1 \$key of method (.*)::contains\(\) expects \(callable(.*)Model given.#'

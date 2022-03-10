@@ -75,7 +75,7 @@ trait Favoriter
             $this->unsetRelation('favoriterFavorites');
         }
 
-        return (bool) $this->favoritedItems(get_class($object))
+        return (bool) $this->favoritedItems(\get_class($object))
             ->detach($object->getKey());
     }
 

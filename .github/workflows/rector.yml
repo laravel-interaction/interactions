@@ -9,16 +9,18 @@ jobs:
     steps:
       - if: github.event.pull_request.head.repo.full_name == github.repository
         name: Checkout code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - if: github.event.pull_request.head.repo.full_name != github.repository
         name: Checkout code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.16.0
+        uses: shivammathur/setup-php@2.17.1
 
       - name: Install dependencies
         uses: ramsey/composer-install@v1
@@ -26,7 +28,7 @@ jobs:
       - run: composer fix
 
       - if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: EndBug/add-and-commit@v7.4.0
+        uses: EndBug/add-and-commit@v8
         with:
           add: .
           message: "Rector Rectify"

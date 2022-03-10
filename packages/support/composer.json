@@ -3,6 +3,11 @@
     "description": "The Laravel Interaction Support package",
     "keywords": ["laravel", "interaction", "support"],
     "license": "MIT",
+    "homepage": "https://github.com/laravel-interaction/support",
+    "support": {
+        "issues": "https://github.com/laravel-interaction/support/issues",
+        "source": "https://github.com/laravel-interaction/support"
+    },
     "authors": [
         {
             "name": "zingimmick",
@@ -14,11 +19,11 @@
         "preferred-install": "dist"
     },
     "require": {
-        "php": "^7.2 || ^8.0",
-        "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+        "php": "^7.3 || ^8.0",
+        "illuminate/support": "^8.0 || ^9.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0,<8.5.12 || ^9.3.3"
+        "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
         "psr-4": {
@@ -27,7 +32,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.x-dev"
+            "dev-master": "2.x-dev"
         }
     },
     "autoload-dev": {

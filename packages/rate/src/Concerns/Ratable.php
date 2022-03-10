@@ -189,54 +189,24 @@ trait Ratable
 
     public function avgRating(): float
     {
-        if (array_key_exists('ratable_ratings_avg_rating', $this->getAttributes())) {
+        if (\array_key_exists('ratable_ratings_avg_rating', $this->getAttributes())) {
             return (float) $this->ratable_ratings_avg_rating;
         }
 
-        $this->loadAvgRating();
+        $this->loadAvg('ratableRatings', 'rating');
 
         return (float) $this->ratable_ratings_avg_rating;
     }
 
-    /**
-     * @return $this
-     */
-    public function loadAvgRating()
-    {
-        if (method_exists($this, 'loadAvg')) {
-            $this->loadAvg('ratableRatings', 'rating');
-        } else {
-            $this->ratable_ratings_avg_rating = $this->ratableRatings()
-                ->avg('rating');
-        }
-
-        return $this;
-    }
-
     public function sumRating(): float
     {
-        if (array_key_exists('ratable_ratings_sum_rating', $this->getAttributes())) {
+        if (\array_key_exists('ratable_ratings_sum_rating', $this->getAttributes())) {
             return (float) $this->ratable_ratings_sum_rating;
         }
 
-        $this->loadSumRating();
+        $this->loadSum('ratableRatings', 'rating');
 
         return (float) $this->ratable_ratings_sum_rating;
-    }
-
-    /**
-     * @return $this
-     */
-    public function loadSumRating()
-    {
-        if (method_exists($this, 'loadSum')) {
-            $this->loadSum('ratableRatings', 'rating');
-        } else {
-            $this->ratable_ratings_sum_rating = $this->ratableRatings()
-                ->sum('rating');
-        }
-
-        return $this;
     }
 
     /**

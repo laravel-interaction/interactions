@@ -8,6 +8,8 @@ use Symplify\MonorepoBuilder\ValueObject\Option;
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
+    $parameters->set(Option::PACKAGE_DIRECTORIES, [__DIR__ . '/packages']);
+
     $parameters->set(
         Option::DATA_TO_APPEND,
         [
@@ -18,10 +20,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 ],
             ],
             'require' => [
-                'php' => '^7.2 || ^8.0',
+                'php' => '^7.3 || ^8.0',
             ],
             'require-dev' => [
-                'symplify/monorepo-builder' => '^8.3 || ^9.2',
+                'symplify/monorepo-builder' => '^10.0',
             ],
             'config' => [
                 'sort-packages' => true,
