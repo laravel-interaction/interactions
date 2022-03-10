@@ -23,6 +23,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(ReturnArrayClassMethodToYieldRector::class)
         ->configure([new ReturnArrayClassMethodToYield(TestCase::class, '*provide*')]);
     $parameters = $containerConfigurator->parameters();
+    $parameters->set(Option::PARALLEL, true);
     $parameters->set(
         Option::BOOTSTRAP_FILES,
         [
