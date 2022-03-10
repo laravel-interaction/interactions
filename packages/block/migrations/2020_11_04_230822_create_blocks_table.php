@@ -22,7 +22,7 @@ class CreateBlocksTable extends Migration
                     ->comment('user_id');
                 $table->morphs('blockable');
                 $table->timestamps();
-                $table->unique([config('block.column_names.user_foreign_key'),"blockable_type","blockable_id"]);
+                $table->unique([config('block.column_names.user_foreign_key'), 'blockable_type', 'blockable_id']);
             }
         );
     }
