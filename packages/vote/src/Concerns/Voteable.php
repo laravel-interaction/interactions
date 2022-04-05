@@ -50,6 +50,7 @@ trait Voteable
     }
 
     /**
+     * @phpstan-param 1|2|3|4 $mode
      * @param array<int, string>|null $divisors
      */
     public function downvotersCountForHumans(
@@ -214,6 +215,7 @@ trait Voteable
     }
 
     /**
+     * @phpstan-param 1|2|3|4 $mode
      * @param array<int, string>|null $divisors
      */
     public function upvotersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
@@ -255,6 +257,7 @@ trait Voteable
     }
 
     /**
+     * @phpstan-param 1|2|3|4 $mode
      * @param array<int, string>|null $divisors
      */
     public function votersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
@@ -287,6 +290,7 @@ trait Voteable
     }
 
     /**
+     * @phpstan-param 1|2|3|4 $mode
      * @param array<int, string>|null $divisors
      */
     public function sumVotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
@@ -315,6 +319,7 @@ trait Voteable
     }
 
     /**
+     * @phpstan-param 1|2|3|4 $mode
      * @param array<int, string>|null $divisors
      */
     public function sumUpvotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
@@ -343,6 +348,7 @@ trait Voteable
     }
 
     /**
+     * @phpstan-param 1|2|3|4 $mode
      * @param array<int, string>|null $divisors
      */
     public function sumDownvotesForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
