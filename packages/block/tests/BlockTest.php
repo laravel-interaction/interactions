@@ -15,17 +15,17 @@ use LaravelInteraction\Block\Tests\Models\User;
 final class BlockTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Block\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Block\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Block\Block
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $block;
 

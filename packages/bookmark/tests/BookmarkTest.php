@@ -15,17 +15,17 @@ use LaravelInteraction\Bookmark\Tests\Models\User;
 final class BookmarkTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Bookmark\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Bookmark\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Bookmark\Bookmark
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $bookmark;
 

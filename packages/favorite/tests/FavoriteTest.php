@@ -15,17 +15,17 @@ use LaravelInteraction\Favorite\Tests\Models\User;
 final class FavoriteTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Favorite\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Favorite\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Favorite\Favorite
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $favorite;
 

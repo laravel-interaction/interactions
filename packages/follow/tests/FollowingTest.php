@@ -15,17 +15,17 @@ use LaravelInteraction\Follow\Tests\Models\User;
 final class FollowingTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Follow\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Follow\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Follow\Following
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $following;
 

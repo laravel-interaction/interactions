@@ -15,17 +15,17 @@ use LaravelInteraction\Rate\Tests\Models\User;
 final class RatingTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Rate\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Rate\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Rate\Rating
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $rating;
 

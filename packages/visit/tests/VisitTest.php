@@ -15,17 +15,17 @@ use LaravelInteraction\Visit\Visit;
 final class VisitTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Visit\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Visit\Tests\Models\Subject
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $subject;
 
     /**
-     * @var \LaravelInteraction\Visit\Visit
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
     private $visit;
 
