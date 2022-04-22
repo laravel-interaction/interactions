@@ -15,32 +15,19 @@ use LaravelInteraction\Follow\Tests\Models\User;
 final class FollowingTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Follow\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Follow\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Follow\Following
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $following;
-
-    /**
-     * @before
-     */
-    protected function setUpFollowing(): void
-    {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->follow($this->channel);
-            $this->following = Following::query()->firstOrFail();
-        });
-    }
 
     public function testFollowingTimestamp(): void
     {

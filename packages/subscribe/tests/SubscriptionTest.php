@@ -15,32 +15,19 @@ use LaravelInteraction\Subscribe\Tests\Models\User;
 final class SubscriptionTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Subscribe\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Subscribe\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Subscribe\Subscription
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $subscription;
-
-    /**
-     * @before
-     */
-    protected function setUpSubscription(): void
-    {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->subscribe($this->channel);
-            $this->subscription = Subscription::query()->firstOrFail();
-        });
-    }
 
     public function testSubscriptionTimestamp(): void
     {

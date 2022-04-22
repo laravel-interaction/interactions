@@ -15,32 +15,19 @@ use LaravelInteraction\Clap\Tests\Models\User;
 final class ApplauseTest extends TestCase
 {
     /**
-     * @var \LaravelInteraction\Clap\Tests\Models\User
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $user;
 
     /**
-     * @var \LaravelInteraction\Clap\Tests\Models\Channel
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $channel;
 
     /**
-     * @var \LaravelInteraction\Clap\Applause
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
      */
     private $applause;
-
-    /**
-     * @before
-     */
-    protected function setUpApplause(): void
-    {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->clap($this->channel);
-            $this->applause = Applause::query()->firstOrFail();
-        });
-    }
 
     public function testApplauseTimestamp(): void
     {
