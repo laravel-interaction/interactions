@@ -15,17 +15,17 @@ use LaravelInteraction\Vote\Vote;
 final class VoteTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Vote\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Vote\Tests\Models\Channel
      */
     private $channel;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Vote\Vote
      */
     private $vote;
 

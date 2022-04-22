@@ -15,23 +15,23 @@ abstract class TestCase extends BaseTestCase
     /**
      * @before
      */
-    protected function setUpDatabaseMigrations(): void
+    public function setUpDatabaseMigrations(): void
     {
         $this->afterApplicationCreated(function (): void {
             $this->loadMigrationsFrom(__DIR__ . '/../migrations');
             Schema::create(
                 'users',
                 function (Blueprint $table): void {
-                    $table->bigIncrements('id');
-                    $table->timestamps();
-                }
+            $table->bigIncrements('id');
+            $table->timestamps();
+        }
             );
             Schema::create(
                 'channels',
                 function (Blueprint $table): void {
-                    $table->bigIncrements('id');
-                    $table->timestamps();
-                }
+            $table->bigIncrements('id');
+            $table->timestamps();
+        }
             );
         });
     }

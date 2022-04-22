@@ -15,19 +15,32 @@ use LaravelInteraction\Rate\Tests\Models\User;
 final class RatingTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Rate\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Rate\Tests\Models\Channel
      */
     private $channel;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Rate\Rating
      */
     private $rating;
+
+    /**
+     * @before
+     */
+    public function setUpRating(): void
+    {
+        $this->afterApplicationCreated(function (): void {
+            $this->user = User::query()->create();
+            $this->channel = Channel::query()->create();
+            $this->user->rate($this->channel);
+            $this->rating = Rating::query()->firstOrFail();
+        });
+    }
 
     public function testRatingTimestamp(): void
     {

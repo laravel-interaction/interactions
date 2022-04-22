@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * @before
      */
-    protected function setUpDatabaseMigrations(): void
+    public function setUpDatabaseMigrations(): void
     {
         $this->afterApplicationCreated(function (): void {
             $this->loadMigrationsFrom(__DIR__ . '/../migrations');
