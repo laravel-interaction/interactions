@@ -22,16 +22,16 @@ abstract class TestCase extends BaseTestCase
             Schema::create(
                 'users',
                 function (Blueprint $table): void {
-            $table->bigIncrements('id');
-            $table->timestamps();
-        }
+                    $table->bigIncrements('id');
+                    $table->timestamps();
+                }
             );
             Schema::create(
                 'channels',
                 function (Blueprint $table): void {
-            $table->bigIncrements('id');
-            $table->timestamps();
-        }
+                    $table->bigIncrements('id');
+                    $table->timestamps();
+                }
             );
         });
     }
