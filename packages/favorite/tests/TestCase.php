@@ -12,28 +12,25 @@ use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    /**
-     * @before
-     */
-    public function setUpDatabaseMigrations(): void
+    protected function setUp(): void
     {
-        $this->afterApplicationCreated(function (): void {
-            $this->loadMigrationsFrom(__DIR__ . '/../migrations');
-            Schema::create(
-                'users',
-                function (Blueprint $table): void {
-                    $table->bigIncrements('id');
-                    $table->timestamps();
-                }
-            );
-            Schema::create(
-                'channels',
-                function (Blueprint $table): void {
-                    $table->bigIncrements('id');
-                    $table->timestamps();
-                }
-            );
-        });
+        parent::setUp();
+
+        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+        Schema::create(
+            'users',
+            function (Blueprint $table): void {
+                $table->bigIncrements('id');
+                $table->timestamps();
+            }
+        );
+        Schema::create(
+            'channels',
+            function (Blueprint $table): void {
+                $table->bigIncrements('id');
+                $table->timestamps();
+            }
+        );
     }
 
     protected function getEnvironmentSetUp($app): void

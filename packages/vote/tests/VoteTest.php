@@ -15,31 +15,28 @@ use LaravelInteraction\Vote\Vote;
 final class VoteTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Vote\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Vote\Tests\Models\Channel
      */
     private $channel;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Vote\Vote
      */
     private $vote;
 
-    /**
-     * @before
-     */
-    public function setUpVote(): void
+    protected function setUp(): void
     {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->vote($this->channel);
-            $this->vote = Vote::query()->firstOrFail();
-        });
+        parent::setUp();
+
+        $this->user = User::query()->create();
+        $this->channel = Channel::query()->create();
+        $this->user->vote($this->channel);
+        $this->vote = Vote::query()->firstOrFail();
     }
 
     public function testVoteTimestamp(): void

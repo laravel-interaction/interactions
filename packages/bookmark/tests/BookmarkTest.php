@@ -15,31 +15,28 @@ use LaravelInteraction\Bookmark\Tests\Models\User;
 final class BookmarkTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Bookmark\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Bookmark\Tests\Models\Channel
      */
     private $channel;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Bookmark\Bookmark
      */
     private $bookmark;
 
-    /**
-     * @before
-     */
-    public function setUpBookmark(): void
+    protected function setUp(): void
     {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->bookmark($this->channel);
-            $this->bookmark = Bookmark::query()->firstOrFail();
-        });
+        parent::setUp();
+
+        $this->user = User::query()->create();
+        $this->channel = Channel::query()->create();
+        $this->user->bookmark($this->channel);
+        $this->bookmark = Bookmark::query()->firstOrFail();
     }
 
     public function testBookmarkTimestamp(): void

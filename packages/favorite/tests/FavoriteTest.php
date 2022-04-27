@@ -15,31 +15,28 @@ use LaravelInteraction\Favorite\Tests\Models\User;
 final class FavoriteTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Favorite\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Favorite\Tests\Models\Channel
      */
     private $channel;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Favorite\Favorite
      */
     private $favorite;
 
-    /**
-     * @before
-     */
-    public function setUpFavorite(): void
+    protected function setUp(): void
     {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->favorite($this->channel);
-            $this->favorite = Favorite::query()->firstOrFail();
-        });
+        parent::setUp();
+
+        $this->user = User::query()->create();
+        $this->channel = Channel::query()->create();
+        $this->user->favorite($this->channel);
+        $this->favorite = Favorite::query()->firstOrFail();
     }
 
     public function testFavoritesTimestamp(): void

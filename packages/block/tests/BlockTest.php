@@ -15,31 +15,28 @@ use LaravelInteraction\Block\Tests\Models\User;
 final class BlockTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Block\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Block\Tests\Models\Channel
      */
     private $channel;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Block\Block
      */
     private $block;
 
-    /**
-     * @before
-     */
-    public function setUpBlock(): void
+    protected function setUp(): void
     {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->block($this->channel);
-            $this->block = Block::query()->firstOrFail();
-        });
+        parent::setUp();
+
+        $this->user = User::query()->create();
+        $this->channel = Channel::query()->create();
+        $this->user->block($this->channel);
+        $this->block = Block::query()->firstOrFail();
     }
 
     public function testBlockTimestamp(): void

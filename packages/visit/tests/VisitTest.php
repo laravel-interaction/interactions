@@ -15,31 +15,28 @@ use LaravelInteraction\Visit\Visit;
 final class VisitTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Visit\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Visit\Tests\Models\Subject
      */
     private $subject;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Visit\Visit
      */
     private $visit;
 
-    /**
-     * @before
-     */
-    public function setUpVisit(): void
+    protected function setUp(): void
     {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->subject = Subject::query()->create();
-            $this->user->visit($this->subject);
-            $this->visit = Visit::query()->firstOrFail();
-        });
+        parent::setUp();
+
+        $this->user = User::query()->create();
+        $this->subject = Subject::query()->create();
+        $this->user->visit($this->subject);
+        $this->visit = Visit::query()->firstOrFail();
     }
 
     public function testVisitTimestamp(): void

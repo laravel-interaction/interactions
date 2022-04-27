@@ -15,31 +15,28 @@ use LaravelInteraction\Like\Tests\Models\User;
 final class LikeTest extends TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Like\Tests\Models\User
      */
     private $user;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Like\Tests\Models\Channel
      */
     private $channel;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null
+     * @var \LaravelInteraction\Like\Like
      */
     private $like;
 
-    /**
-     * @before
-     */
-    public function setUpLike(): void
+    protected function setUp(): void
     {
-        $this->afterApplicationCreated(function (): void {
-            $this->user = User::query()->create();
-            $this->channel = Channel::query()->create();
-            $this->user->like($this->channel);
-            $this->like = Like::query()->firstOrFail();
-        });
+        parent::setUp();
+
+        $this->user = User::query()->create();
+        $this->channel = Channel::query()->create();
+        $this->user->like($this->channel);
+        $this->like = Like::query()->firstOrFail();
     }
 
     public function testLikeTimestamp(): void
