@@ -2,28 +2,29 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\MonorepoBuilder\ValueObject\Option;
+use Symplify\MonorepoBuilder\Config\MBConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
+return static function (MBConfig $config): void {
+    $config->packageDirectories([__DIR__ . '/packages']);
 
-    $parameters->set(Option::PACKAGE_DIRECTORIES, [__DIR__ . '/packages']);
-
-    $parameters->set(
-        Option::DATA_TO_APPEND,
+    $config->dataToAppend(
         [
+            'support' => [
+                'issues' => 'https://github.com/laravel-interaction/interactions/issues',
+                'source' => 'https://github.com/laravel-interaction/interactions',
+            ],
             'authors' => [
                 [
                     'name' => 'zingimmick',
                     'email' => 'zingimmick@outlook.com',
+                    'homepage' => 'https://github.com/zingimmick',
                 ],
             ],
             'require' => [
                 'php' => '^7.3 || ^8.0',
             ],
             'require-dev' => [
-                'symplify/monorepo-builder' => '^10.0',
+                'symplify/monorepo-builder' => '^11.0',
             ],
             'config' => [
                 'sort-packages' => true,
@@ -33,5 +34,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'prefer-stable' => true,
         ]
     );
-    $parameters->set(Option::PACKAGE_ALIAS_FORMAT, '<major>.x-dev');
+    $config->packageAliasFormat('<major>.x-dev');
 };
