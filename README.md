@@ -9,7 +9,7 @@
 <a href="https://codeclimate.com/github/laravel-interaction/interactions/maintainability"><img src="https://api.codeclimate.com/v1/badges/e243742cfef988445a3f/maintainability" alt="Code Climate" /></a>
 </p>
 
-> **Requires [PHP 7.3+](https://php.net/releases/)**
+> **Requires [PHP 8.0+](https://php.net/releases/)**
 
 ## Single interaction
 
