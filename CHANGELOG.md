@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.2.0 - 2023-03-18
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+[Allow laravel-interaction/support 3.0](https://github.com/laravel-interaction/interactions/commit/4083c1e450379fb91eb428c364cc3636e7291473)
+
+**Full Changelog**: https://github.com/laravel-interaction/interactions/compare/3.1.0...3.2.0
+
 ## 3.1.0 - 2023-02-16
 
 <!-- Release notes generated using configuration in .github/release.yml at 3.x -->
