@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Rector\CodingStyle\Rector\ClassMethod\ReturnArrayClassMethodToYieldRector;
 use Rector\CodingStyle\ValueObject\ReturnArrayClassMethodToYield;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
+use Rector\Php80\Rector\FunctionLike\UnionTypesRector;
 use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Privatization\Rector\Class_\FinalizeClassesWithoutChildrenRector;
@@ -29,6 +30,7 @@ return static function (Rector\Config\RectorConfig $rectorConfig): void {
         RenameParamToMatchTypeRector::class,
         AddSeeTestAnnotationRector::class,
         FinalizeClassesWithoutChildrenRector::class,
+        UnionTypesRector::class,
     ]);
     $rectorConfig->paths(
         [__DIR__ . '/packages', __DIR__ . '/ecs.php', __DIR__ . '/monorepo-builder.php', __DIR__ . '/rector.php']
