@@ -16,7 +16,7 @@ final class SubscribableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Subscribe\Tests\Models\Channel|\LaravelInteraction\Subscribe\Tests\Models\User>>>
      */
-    public static function provideModelClasses(): iterable
+    public static function provideModelClasses(): \Iterator
     {
         yield [Channel::class];
 

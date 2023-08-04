@@ -16,7 +16,7 @@ final class VoteableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Vote\Tests\Models\Channel|\LaravelInteraction\Vote\Tests\Models\User>>>
      */
-    public static function provideModelClasses(): iterable
+    public static function provideModelClasses(): \Iterator
     {
         yield [Channel::class];
 
