@@ -65,7 +65,7 @@ final class InteractionTest extends TestCase
         string $universalSuffix
     ): void {
         $this->assertSame($onePrecision, Interaction::numberForHumans($actual, 1, PHP_ROUND_HALF_UP, self::DIVISORS));
-        $this->assertSame($twoPrecision, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_UP, self::DIVISORS));
+        $this->assertSame($twoPrecision,Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_UP, self::DIVISORS));
         $this->assertSame($halfDown, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN, self::DIVISORS));
         Interaction::divisorMap(self::DIVISORS);
         $this->assertSame($halfDown, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN));
