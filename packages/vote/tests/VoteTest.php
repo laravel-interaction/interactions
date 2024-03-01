@@ -18,7 +18,7 @@ final class VoteTest extends TestCase
 
     private \LaravelInteraction\Vote\Tests\Models\Channel $channel;
 
-    private \LaravelInteraction\Vote\Vote $vote;
+    private Vote $vote;
 
     protected function setUp(): void
     {
