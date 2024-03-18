@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.3.0 - 2024-03-18
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+### What's Changed
+
+#### Other Changes
+
+* Rename skipped rules on $rectorConfig->skip() are changed to different namespace  by @zingimmick in https://github.com/laravel-interaction/interactions/pull/160
+* Support for PHP 8.3 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/167
+* Update license copyright year(s) by @github-actions in https://github.com/laravel-interaction/interactions/pull/171
+* Support for Laravel 11 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/177
+
+**Full Changelog**: https://github.com/laravel-interaction/interactions/compare/3.2.0...3.3.0
+
 ## 3.2.0 - 2023-03-18
 
 <!-- Release notes generated using configuration in .github/release.yml at 3.x -->
