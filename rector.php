@@ -16,10 +16,7 @@ return static function (\Rector\Config\RectorConfig $rectorConfig): void {
         __DIR__ . '/vendor/symplify/easy-coding-standard/vendor/autoload.php',
         __DIR__ . '/vendor/nunomaduro/larastan/bootstrap.php',
     ]);
-    $rectorConfig->skip([
-        RenameParamToMatchTypeRector::class,
-        AddSeeTestAnnotationRector::class,
-    ]);
+    $rectorConfig->skip([RenameParamToMatchTypeRector::class, AddSeeTestAnnotationRector::class]);
     $rectorConfig->paths(
         [__DIR__ . '/packages', __DIR__ . '/ecs.php', __DIR__ . '/monorepo-builder.php', __DIR__ . '/rector.php']
     );
