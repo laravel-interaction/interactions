@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
-use Rector\Privatization\Rector\Class_\FinalizeClassesWithoutChildrenRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Zing\CodingStandard\Set\RectorSetList;
 
@@ -20,7 +19,6 @@ return static function (\Rector\Config\RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
         RenameParamToMatchTypeRector::class,
         AddSeeTestAnnotationRector::class,
-        FinalizeClassesWithoutChildrenRector::class,
     ]);
     $rectorConfig->paths(
         [__DIR__ . '/packages', __DIR__ . '/ecs.php', __DIR__ . '/monorepo-builder.php', __DIR__ . '/rector.php']
