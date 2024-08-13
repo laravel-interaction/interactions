@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
-use Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Zing\CodingStandard\Set\RectorSetList;
@@ -16,7 +15,7 @@ return static function (\Rector\Config\RectorConfig $rectorConfig): void {
         __DIR__ . '/vendor/symplify/easy-coding-standard/vendor/autoload.php',
         __DIR__ . '/vendor/nunomaduro/larastan/bootstrap.php',
     ]);
-    $rectorConfig->skip([RenameParamToMatchTypeRector::class, AddSeeTestAnnotationRector::class]);
+    $rectorConfig->skip([RenameParamToMatchTypeRector::class]);
     $rectorConfig->paths(
         [__DIR__ . '/packages', __DIR__ . '/ecs.php', __DIR__ . '/monorepo-builder.php', __DIR__ . '/rector.php']
     );
