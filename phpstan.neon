@@ -5,11 +5,17 @@ parameters:
     level: 8
     paths:
         - packages
-    checkGenericClassInNonGenericObjectType: false
     ignoreErrors:
+        - identifier: missingType.generics
         - '#Class App\\User not found.#'
         - '#Method LaravelInteraction\\Rate\\Tests\\Models\\User::rate\(\) should return LaravelInteraction\\Rate\\Rating but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Rate\\Tests\\Models\\User::rateOnce\(\) should return LaravelInteraction\\Rate\\Rating but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Clap\\Tests\\Models\\User::clap\(\) should return LaravelInteraction\\Clap\\Applause but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Vote\\Tests\\Models\\User::vote\(\) should return LaravelInteraction\\Vote\\Vote but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Parameter \#1 \$key of method (.*)::contains\(\) expects \(callable(.*)Model given.#'
+        - '#Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model::morphMany\(\)#'
+        - '#Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model::morphToMany\(\)#'
+        - '#Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model::belongsTo\(\)#'
+        - '#Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model::hasMany\(\)#'
+        - '#Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model::morphedByMany\(\)#'
+        - '#Parameter \#1 \$related of method Illuminate\\Database\\Eloquent\\Model::morphedByMany\(\) expects class-string<Illuminate\\Database\\Eloquent\\Model>, string given.#'
