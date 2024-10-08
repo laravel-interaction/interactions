@@ -15,7 +15,6 @@ use LaravelInteraction\Visit\Visit;
 final class VisitTest extends TestCase
 {
     private User $user;
-
     private Subject $subject;
 
     private Visit $visit;
