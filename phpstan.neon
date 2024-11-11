@@ -8,9 +8,16 @@ parameters:
     ignoreErrors:
         - identifier: missingType.generics
         - '#Class App\\User not found.#'
+        - '#Method LaravelInteraction\\Block\\Tests\\Models\\User::block\(\) should return LaravelInteraction\\Block\\Block but returns Illuminate\\Database\\Eloquent\\Model.#'
+        - '#Method LaravelInteraction\\Bookmark\\Tests\\Models\\User::bookmark\(\) should return LaravelInteraction\\Bookmark\\Bookmark but returns Illuminate\\Database\\Eloquent\\Model.#'
+        - '#Method LaravelInteraction\\Clap\\Tests\\Models\\User::clapOnce\(\) should return LaravelInteraction\\Clap\\Applause but returns Illuminate\\Database\\Eloquent\\Model.#'
+        - '#Method LaravelInteraction\\Favorite\\Tests\\Models\\User::favorite\(\) should return LaravelInteraction\\Favorite\\Favorite but returns Illuminate\\Database\\Eloquent\\Model.#'
+        - '#Method LaravelInteraction\\Follow\\Tests\\Models\\User::follow\(\) should return LaravelInteraction\\Follow\\Following but returns Illuminate\\Database\\Eloquent\\Model.#'
+        - '#Method LaravelInteraction\\Like\\Tests\\Models\\User::like\(\) should return LaravelInteraction\\Like\\Like but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Rate\\Tests\\Models\\User::rate\(\) should return LaravelInteraction\\Rate\\Rating but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Rate\\Tests\\Models\\User::rateOnce\(\) should return LaravelInteraction\\Rate\\Rating but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Clap\\Tests\\Models\\User::clap\(\) should return LaravelInteraction\\Clap\\Applause but returns Illuminate\\Database\\Eloquent\\Model.#'
+        - '#Method LaravelInteraction\\Subscribe\\Tests\\Models\\User::subscribe\(\) should return LaravelInteraction\\Subscribe\\Subscription but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Method LaravelInteraction\\Vote\\Tests\\Models\\User::vote\(\) should return LaravelInteraction\\Vote\\Vote but returns Illuminate\\Database\\Eloquent\\Model.#'
         - '#Parameter \#1 \$key of method (.*)::contains\(\) expects \(callable(.*)Model given.#'
         - '#Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model::morphMany\(\)#'
