@@ -13,7 +13,7 @@ return static function (\Rector\Config\RectorConfig $rectorConfig): void {
     $rectorConfig->bootstrapFiles([
         __DIR__ . '/vendor/squizlabs/php_codesniffer/autoload.php',
         __DIR__ . '/vendor/symplify/easy-coding-standard/vendor/autoload.php',
-        __DIR__ . '/vendor/nunomaduro/larastan/bootstrap.php',
+        __DIR__ . '/vendor/larastan/larastan/bootstrap.php',
     ]);
     $rectorConfig->skip([RenameParamToMatchTypeRector::class]);
     $rectorConfig->paths(
