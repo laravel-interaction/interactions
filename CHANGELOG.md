@@ -8,6 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.4.0 - 2025-02-24
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+### What's Changed
+
+#### Other Changes
+
+* Allow PHPUnit 11 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/185
+* Remove rules that were never registered by @zingimmick in https://github.com/laravel-interaction/interactions/pull/193
+* Support for PHP 8.4 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/198
+* Allow orchestra/testbench 9.0 and nesbot/carbon 3.4 in tests action by @zingimmick in https://github.com/laravel-interaction/interactions/pull/200
+* Update license copyright year(s) by @github-actions in https://github.com/laravel-interaction/interactions/pull/203
+* Use larastan/larastan instead of nunomaduro/larastan by @zingimmick in https://github.com/laravel-interaction/interactions/pull/204
+* Support for Laravel 12 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/205
+
+**Full Changelog**: https://github.com/laravel-interaction/interactions/compare/3.3.0...3.4.0
+
 ## 3.3.0 - 2024-03-18
 
 <!-- Release notes generated using configuration in .github/release.yml at 3.x -->
