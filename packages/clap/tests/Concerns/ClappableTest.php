@@ -7,6 +7,7 @@ namespace LaravelInteraction\Clap\Tests\Concerns;
 use LaravelInteraction\Clap\Tests\Models\Channel;
 use LaravelInteraction\Clap\Tests\Models\User;
 use LaravelInteraction\Clap\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
@@ -28,6 +29,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testApplause(string $modelClass): void
     {
         $user = User::query()->create();
@@ -42,6 +44,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testClappersCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -80,6 +83,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testWithClappersCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -104,6 +108,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testClappersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
@@ -117,6 +122,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -136,6 +142,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsNotClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -155,6 +162,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testClappers(string $modelClass): void
     {
         $user = User::query()->create();
@@ -170,6 +178,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -185,6 +194,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereNotClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -203,6 +213,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testClappableApplauseCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -221,6 +232,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testClappableApplauseCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();

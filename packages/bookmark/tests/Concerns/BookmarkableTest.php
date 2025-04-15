@@ -7,6 +7,7 @@ namespace LaravelInteraction\Bookmark\Tests\Concerns;
 use LaravelInteraction\Bookmark\Tests\Models\Channel;
 use LaravelInteraction\Bookmark\Tests\Models\User;
 use LaravelInteraction\Bookmark\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
@@ -28,6 +29,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBookmarkableBookmarks(string $modelClass): void
     {
         $user = User::query()->create();
@@ -42,6 +44,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBookmarkersCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -59,6 +62,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBookmarkersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
@@ -72,6 +76,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsBookmarkedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -91,6 +96,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsNotBookmarkedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -110,6 +116,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBookmarkers(string $modelClass): void
     {
         $user = User::query()->create();
@@ -125,6 +132,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereBookmarkedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -140,6 +148,7 @@ final class BookmarkableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Bookmark\Tests\Models\User|\LaravelInteraction\Bookmark\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereNotBookmarkedBy(string $modelClass): void
     {
         $user = User::query()->create();

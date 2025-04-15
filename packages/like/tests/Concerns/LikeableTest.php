@@ -7,6 +7,7 @@ namespace LaravelInteraction\Like\Tests\Concerns;
 use LaravelInteraction\Like\Tests\Models\Channel;
 use LaravelInteraction\Like\Tests\Models\User;
 use LaravelInteraction\Like\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
@@ -28,6 +29,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testLikes(string $modelClass): void
     {
         $user = User::query()->create();
@@ -42,6 +44,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFansCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -59,6 +62,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFansCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
@@ -72,6 +76,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsLikedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -91,6 +96,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsNotLikedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -110,6 +116,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFans(string $modelClass): void
     {
         $user = User::query()->create();
@@ -125,6 +132,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereLikedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -140,6 +148,7 @@ final class LikeableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Like\Tests\Models\User|\LaravelInteraction\Like\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereNotLikedBy(string $modelClass): void
     {
         $user = User::query()->create();

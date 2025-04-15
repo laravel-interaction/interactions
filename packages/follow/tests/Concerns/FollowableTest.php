@@ -7,6 +7,7 @@ namespace LaravelInteraction\Follow\Tests\Concerns;
 use LaravelInteraction\Follow\Tests\Models\Channel;
 use LaravelInteraction\Follow\Tests\Models\User;
 use LaravelInteraction\Follow\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
@@ -28,6 +29,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFollowings(string $modelClass): void
     {
         $user = User::query()->create();
@@ -42,6 +44,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFollowersCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -59,6 +62,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFollowersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
@@ -72,6 +76,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsFollowedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -91,6 +96,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsNotFollowedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -110,6 +116,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFollowers(string $modelClass): void
     {
         $user = User::query()->create();
@@ -125,6 +132,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereFollowedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -140,6 +148,7 @@ final class FollowableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Follow\Tests\Models\User|\LaravelInteraction\Follow\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereNotFollowedBy(string $modelClass): void
     {
         $user = User::query()->create();

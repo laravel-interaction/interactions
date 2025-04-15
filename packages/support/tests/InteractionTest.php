@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelInteraction\Support\Tests;
 
 use LaravelInteraction\Support\Interaction;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
@@ -54,6 +55,7 @@ final class InteractionTest extends TestCase
     /**
      * @dataProvider provideNumberForHumanCases
      */
+    #[DataProvider('provideNumberForHumanCases')]
     public function testNumberForHuman(
         float|int $actual,
         string $onePrecision,
