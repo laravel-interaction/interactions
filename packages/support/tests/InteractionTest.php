@@ -23,6 +23,27 @@ final class InteractionTest extends TestCase
     ];
 
     /**
+     * @dataProvider provideNumberForHumanCases
+     */
+    #[DataProvider('provideNumberForHumanCases')]
+    public function testNumberForHuman(
+        float|int $actual,
+        string $onePrecision,
+        string $twoPrecision,
+        string $halfDown,
+        string $universalSuffix
+    ): void {
+        $this->assertSame($onePrecision, Interaction::numberForHumans($actual, 1, PHP_ROUND_HALF_UP, self::DIVISORS));
+        $this->assertSame($twoPrecision, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_UP, self::DIVISORS));
+        $this->assertSame($halfDown, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN, self::DIVISORS));
+        Interaction::divisorMap(self::DIVISORS);
+        $this->assertSame($halfDown, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN));
+        $this->assertSame($universalSuffix, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN, [
+            1 => 'a',
+        ]));
+    }
+
+    /**
      * @return \Iterator<array{float|int, string, string, string, string}>
      */
     public static function provideNumberForHumanCases(): \Iterator
@@ -50,26 +71,5 @@ final class InteractionTest extends TestCase
         yield [1_234_567_890_123_456, '1.2Qa', '1.23Qa', '1.23Qa', '1234567890123456a'];
 
         yield [1_234_567_890_123_456_789, '1.2Qi', '1.23Qi', '1.23Qi', '1234567890123456789a'];
-    }
-
-    /**
-     * @dataProvider provideNumberForHumanCases
-     */
-    #[DataProvider('provideNumberForHumanCases')]
-    public function testNumberForHuman(
-        float|int $actual,
-        string $onePrecision,
-        string $twoPrecision,
-        string $halfDown,
-        string $universalSuffix
-    ): void {
-        $this->assertSame($onePrecision, Interaction::numberForHumans($actual, 1, PHP_ROUND_HALF_UP, self::DIVISORS));
-        $this->assertSame($twoPrecision, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_UP, self::DIVISORS));
-        $this->assertSame($halfDown, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN, self::DIVISORS));
-        Interaction::divisorMap(self::DIVISORS);
-        $this->assertSame($halfDown, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN));
-        $this->assertSame($universalSuffix, Interaction::numberForHumans($actual, 2, PHP_ROUND_HALF_DOWN, [
-            1 => 'a',
-        ]));
     }
 }

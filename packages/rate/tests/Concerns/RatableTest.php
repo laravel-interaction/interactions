@@ -15,16 +15,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 final class RatableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Rate\Tests\Models\Channel|\LaravelInteraction\Rate\Tests\Models\User>>>
-     */
-    public static function provideModelClasses(): \Iterator
-    {
-        yield [Channel::class];
-
-        yield [User::class];
-    }
-
-    /**
      * @dataProvider provideModelClasses
      *
      * @param class-string<\LaravelInteraction\Rate\Tests\Models\User|\LaravelInteraction\Rate\Tests\Models\Channel> $modelClass
@@ -308,5 +298,15 @@ final class RatableTest extends TestCase
         $user->rate($model);
         $this->assertEqualsWithDelta(20.0, $model->ratingPercent(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(10.0, $model->ratingPercent(10), PHP_FLOAT_EPSILON);
+    }
+
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Rate\Tests\Models\Channel|\LaravelInteraction\Rate\Tests\Models\User>>>
+     */
+    public static function provideModelClasses(): \Iterator
+    {
+        yield [Channel::class];
+
+        yield [User::class];
     }
 }
