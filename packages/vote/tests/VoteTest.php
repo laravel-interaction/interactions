@@ -16,7 +16,7 @@ final class VoteTest extends TestCase
 {
     private User $user;
 
-    private Channel $channel; 
+    private Channel $channel;
 
     private Vote $vote;
 
