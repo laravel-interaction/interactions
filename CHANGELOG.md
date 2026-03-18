@@ -8,6 +8,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.5.0 - 2026-03-18
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+### What's Changed
+
+#### Other Changes
+
+* Support for PHPUnit 12 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/206
+* Bump shivammathur/setup-php from 2.32.0 to 2.33.0 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/207
+* Bump shivammathur/setup-php from 2.33.0 to 2.34.0 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/208
+* Bump shivammathur/setup-php from 2.34.0 to 2.34.1 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/209
+* Bump shivammathur/setup-php from 2.34.1 to 2.35.1 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/210
+* Bump shivammathur/setup-php from 2.35.1 to 2.35.2 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/211
+* Bump actions/checkout from 4.2.2 to 5.0.0 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/213
+* Bump shivammathur/setup-php from 2.35.2 to 2.35.3 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/212
+* Bump shivammathur/setup-php from 2.35.3 to 2.35.4 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/214
+* Bump shivammathur/setup-php from 2.35.4 to 2.35.5 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/215
+* Support for PHP 8.5 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/216
+* Bump actions/checkout from 5.0.0 to 5.0.1 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/217
+* Bump actions/checkout from 5.0.1 to 6.0.0 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/218
+* Bump shivammathur/setup-php from 2.35.5 to 2.36.0 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/219
+* Bump actions/checkout from 6.0.0 to 6.0.1 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/220
+* Update license copyright year(s) by @github-actions[bot] in https://github.com/laravel-interaction/interactions/pull/221
+* Bump actions/checkout from 6.0.1 to 6.0.2 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/222
+* Update orchestra/testbench version constraint by @zingimmick in https://github.com/laravel-interaction/interactions/pull/223
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/224
+* Bump shivammathur/setup-php from 2.36.0 to 2.37.0 by @dependabot[bot] in https://github.com/laravel-interaction/interactions/pull/225
+* Support for Laravel 13 by @zingimmick in https://github.com/laravel-interaction/interactions/pull/226
+
+**Full Changelog**: https://github.com/laravel-interaction/interactions/compare/3.4.0...3.5.0
+
 ## 3.4.0 - 2025-02-24
 
 <!-- Release notes generated using configuration in .github/release.yml at 3.x -->
